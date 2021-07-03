@@ -9,7 +9,7 @@ class Test extends React.Component {
        
       };
     }
-  
+
   
     render() {
       return (
@@ -18,11 +18,11 @@ class Test extends React.Component {
             className="game"
           />
           <br></br>
-          <h1 >New game</h1>
+          <h1 >Hello!!!</h1>
           <h1
         
           >
-            Load save from server
+            World!!!
           </h1>
         </div>
       );
