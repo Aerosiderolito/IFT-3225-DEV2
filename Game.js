@@ -10,27 +10,27 @@ class Game extends React.Component {
       };
     }
 
+    start(){
+
+      
+      return window.prompt("XD");
+
+    }
 
 
   
     render() {
       
       return (
-        <div className="Test">
-          <div
-            className="game"
-          />
-          <br></br>
-          <h1 >Hillo!!!</h1>
-          <h1
-        
-          >
-            World!!!
-          </h1>
+        <div className="Game">
+          <h1>Click ici pour commencer</h1>
+          <button className={"btn btn-primary"} onClick={this.start}>Commencer le jeux</button>
+
+          <Board/>
          
         </div>
       );
     }
   }
   
-  ReactDOM.render(<Test />, document.getElementById("root"));
+  ReactDOM.render(<Game />, document.getElementById("root"));
