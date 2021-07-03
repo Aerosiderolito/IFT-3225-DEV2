@@ -1,4 +1,4 @@
-class Test extends React.Component {
+class Game extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -10,20 +10,24 @@ class Test extends React.Component {
       };
     }
 
+
+
   
     render() {
+      
       return (
         <div className="Test">
           <div
             className="game"
           />
           <br></br>
-          <h1 >Hello!!!</h1>
+          <h1 >Hillo!!!</h1>
           <h1
         
           >
             World!!!
           </h1>
+         
         </div>
       );
     }
