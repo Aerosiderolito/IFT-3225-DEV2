@@ -3,15 +3,19 @@ class Board extends React.Component {
         
       super(props);
       this.state = {
-        
+        dimension: 0,
         
        
       };
     }
 
     PopUpInit(){
-    
-        return 0;
+      
+        this.state.dimension = window.prompt("Saissisez une dimension pour le tableau");
+
+        for(let i=0; i<+this.state.dimension; i++){
+            console.log(i);
+        }
 
     }
 
@@ -19,25 +23,18 @@ class Board extends React.Component {
 
   
     render() {
-      
+        let xd = "this variable";
       return (
-        <div className="Test">
-          <div
-            className="Board"
-          />
-          <br></br>
-          <h1 >Hillo!!!</h1>
-          <h1
-        
-          >
-            World!!!
-          </h1>
+        <div className="Board">
+        <button onClick={() => this.PopUpInit()}>Click pour commencer</button>
 
-          
+        <p>{this.state.dimension}</p>
+
+        
          
         </div>
       );
     }
   }
   
-  ReactDOM.render(<Board />, document.getElementById("root"));
+  ReactDOM.render(<Board/>, document.getElementById("root"));

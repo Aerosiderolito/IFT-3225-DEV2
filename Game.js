@@ -3,8 +3,8 @@ class Game extends React.Component {
       super(props);
       this.state = {
         
-        colors: {
-          first:"Red"
+        Game: {
+          dimension:0
           },
        
       };
@@ -13,7 +13,9 @@ class Game extends React.Component {
     start(){
 
       
-      return window.prompt("XD");
+      aaa = window.prompt("Veillez choisir la dimension du tableau");
+      
+      return 
 
     }
 
@@ -23,10 +25,10 @@ class Game extends React.Component {
       
       return (
         <div className="Game">
-          <h1>Click ici pour commencer</h1>
-          <button className={"btn btn-primary"} onClick={this.start}>Commencer le jeux</button>
-
+          <h1>Saissez une dimension pour commencer</h1>
           <Board/>
+
+   
          
         </div>
       );
