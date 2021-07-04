@@ -14,33 +14,62 @@ class Board extends React.Component {
         this.state.cellTab = [];
         this.state.dimension = window.prompt("Saissisez une dimension pour le tableau");
         
-        let cell = <div>0</div>;
-        /*Repeter n fois pour remplir le tableau */
-        for(let i=0; i<(this.state.dimension); i++){
-          
-          let line = [];  
-          
-          /*Ici pour faire une ligne */
-          
-          for(let j = 0 ; j<this.state.dimension;j++){
-            line.push(cell);
-          }
 
-            this.state.cellTab.push(line);
+
+        /*Repeter n fois pour remplir le tableau */
+
+        for(let i = 0; i <this.state.dimension*this.state.dimension; i++){
+          this.state.cellTab.push(0);
+          
         }
-        console.log(this.state.cellTab);
+
+        // Remplir de 2
+       
+        this.setRandom2(this.state.cellTab);
+
         this.printer(this.state.cellTab);
-        /*this.printer(this.state.cellTab);*/
-        
+
+        console.log(this.state.cellTab);
+
     }
 
-    printer(tabu){
-      let retval = [];
-      for(let i = 0; i< tabu.length; i++){
-        let line = <div className="row">{tabu[i]}</div>
-        retval.push(line);
+    setRandom2(tabu){
+      let randomC = Math.floor(Math.random()*tabu.length);
+      
+      for(let i = 0; i<2; i++){
+
+        if(tabu[randomC]==0){
+          tabu[randomC] = 2;
+        }
+        else{
+          randomC = Math.floor(Math.random()*this.state.dimension);
+          i--;
+        }
+      
       }
-      ReactDOM.render(retval,document.getElementById("tableau") );
+    }
+
+
+    printer(tabu){
+      
+      let displayTab = [];  
+      let line = [];
+
+      for(let i=0; i<=tabu.length; i++){
+        line.push(<span>{tabu[i]}</span>);
+        if(((i+1)%this.state.dimension==0) && i !=0){
+          displayTab.push(<div className="row">{line}</div>);
+          line = [];
+        }
+      }
+     
+      // for(let i = 0; i< displayTab.length; i++){
+      //   let line = <div className="row">{tabu[i]}</div>
+      //   retval.push(line);
+      //  }
+       ReactDOM.render(displayTab,document.getElementById("tableau") );
+
+    
       
     }
 

@@ -1,8 +1,12 @@
 #tableau{
+    /* display: flex;
+    flex-wrap: wrap-reverse; */
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     width: 50%;
     padding: auto;
+    font-size:large;
+    
     
     
 }
@@ -15,6 +19,8 @@ div.row{
     text-align: center;
     line-height: 100px; /*Ici pour aligner le texte*/
     margin:auto;
+
+    
     
    
 }

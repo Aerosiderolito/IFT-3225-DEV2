@@ -42,19 +42,12 @@ class Game extends React.Component {
       return (
         <div className={"Game"} onKeyPress={this.handleKeyPress}  >
           <h1>Saissez une dimension pour commencer</h1>
-     
           <div>
             <input type="text" id="one"  />
           </div>
-          <Board />
-          
-          
-
-   
-         
+          <Board/>
         </div>
       );
     }
   }
   
-  ReactDOM.render(<Game />, document.getElementById("root"));
