@@ -4,7 +4,7 @@ class Board extends React.Component {
       super(props);
       this.state = {
         dimension: 0,
-        cellTab: [],
+        cellTab: [], 
        
       };
     }
@@ -15,9 +15,12 @@ class Board extends React.Component {
         this.state.dimension = window.prompt("Saissisez une dimension pour le tableau");
         
         let cell = <div>0</div>;
+        /*Repeter n fois pour remplir le tableau */
         for(let i=0; i<(this.state.dimension); i++){
           
-          let line = [];   
+          let line = [];  
+          
+          /*Ici pour faire une ligne */
           
           for(let j = 0 ; j<this.state.dimension;j++){
             line.push(cell);
@@ -45,8 +48,9 @@ class Board extends React.Component {
       
       let xd = "this variable";
       return (
-        <div className="Board">
+        <div className={"Board"}>
             <button onClick={() => this.popUpInit()}>Click pour commencer</button>
+            <h1 id="score">Score</h1>
             <div id={"tableau"}>
 
             </div>

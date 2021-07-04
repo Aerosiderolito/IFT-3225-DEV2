@@ -1,11 +1,15 @@
 #tableau{
     display: flex;
     flex-wrap: wrap;
+    width: 50%;
+    padding: auto;
     
     
 }
 
-
+html{
+    min-width: 700px;
+}
 
 div.row{
     text-align: center;
@@ -46,4 +50,9 @@ div input{
 body h1{
     text-align:center;
     margin:auto;
+}
+
+
+#score{
+    margin-bottom: 1em;
 }
