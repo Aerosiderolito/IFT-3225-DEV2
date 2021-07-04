@@ -12,26 +12,23 @@ class Board extends React.Component {
     PopUpInit(){
       
         this.state.dimension = window.prompt("Saissisez une dimension pour le tableau");
-
+     
         for(let i=0; i<+this.state.dimension; i++){
+            document.getElementById("root").appendChild(document.createElement("p"));
+
             console.log(i);
         }
-
     }
-
-
-
-  
     render() {
-        let xd = "this variable";
+      
+      let xd = "this variable";
       return (
         <div className="Board">
-        <button onClick={() => this.PopUpInit()}>Click pour commencer</button>
+            <button onClick={() => this.PopUpInit()}>Click pour commencer</button>
+            <div id={"tableau"}>
+              
+            </div>
 
-        <p>{this.state.dimension}</p>
-
-        
-         
         </div>
       );
     }

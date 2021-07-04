@@ -1,0 +1,19 @@
+#tableau{
+    margin: 0 auto;
+    width: 400px;
+    height: 400px;
+    background-color: blue;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#score{
+    text-align: center;
+}
+
+button{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto 2em;
+    
+}
