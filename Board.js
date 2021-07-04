@@ -38,13 +38,32 @@ class Board extends React.Component {
       
       for(let i = 0; i<2; i++){
 
-        if(tabu[randomC]==0){
-          tabu[randomC] = 2;
+        let coin = (Math.random());
+
+        if(coin>0.5){
+          // numero 2
+          if(tabu[randomC]==0){
+            tabu[randomC] = 2;
+          }
+          else{
+            randomC = Math.floor(Math.random()*this.state.dimension);
+            i--;
+          }
+
         }
         else{
-          randomC = Math.floor(Math.random()*this.state.dimension);
-          i--;
+          // numero 4
+          if(tabu[randomC]==0){
+            tabu[randomC] = 4;
+          }
+          else{
+            randomC = Math.floor(Math.random()*this.state.dimension);
+            i--;
+          }
+
         }
+
+        
       
       }
     }
@@ -62,20 +81,13 @@ class Board extends React.Component {
           line = [];
         }
       }
-     
-      // for(let i = 0; i< displayTab.length; i++){
-      //   let line = <div className="row">{tabu[i]}</div>
-      //   retval.push(line);
-      //  }
+   
        ReactDOM.render(displayTab,document.getElementById("tableau") );
-
-    
-      
+   
     }
 
     render() {
       
-      let xd = "this variable";
       return (
         <div className={"Board"}>
             <button onClick={() => this.popUpInit()}>Click pour commencer</button>

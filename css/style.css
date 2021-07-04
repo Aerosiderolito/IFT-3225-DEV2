@@ -3,27 +3,37 @@
     flex-wrap: wrap-reverse; */
     display: flex;
     flex-direction: column;
-    width: 50%;
-    padding: auto;
     font-size:large;
-    
-    
-    
+   
+
 }
 
+.row{
+   
+    font-size: xxx-large;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    margin: 1em;
+}
+
+div.row span{
+
+    background-color: yellow;
+    text-align: center!important;
+    
+
+    
+}
+span{
+   
+    padding: 1em;
+    border:1px solid red;
+   
+}
 html{
     min-width: 700px;
 }
 
-div.row{
-    text-align: center;
-    line-height: 100px; /*Ici pour aligner le texte*/
-    margin:auto;
-
-    
-    
-   
-}
 
 #score{
     text-align: center;
@@ -38,16 +48,6 @@ button{
 
 
 
-div#tableau{
-    margin-left: 2em;
-    margin-right: 2em;
-    border: 2px solid red;
-    background-color: yellow;
-    
-    
-    
-    
-}
 
 div input{
     margin:auto;
