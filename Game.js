@@ -12,40 +12,13 @@ class Game extends React.Component {
     }
 
 
-
-    handleKeyPress = (event) => {
-
-        document.addEventListener("keydown", event => {
-        console.log(event.key);}
-        )
-      /*window.onKeyPress = () => {
-        console.log("xd");
-      }*/
-      /*if(event.key === 'Enter')*/
-
-     
-      /*if(true){
-        console.log(event.charCode+' up pressed here! ')
-
-        if(event.charCode === "65"){
-          console.log("UP");
-        }
-
-      }*/
-    }
-    
-
-
   
     render() {
       
       return (
-        <div className={"Game"} onKeyPress={this.handleKeyPress}  >
+        <div className={"Game"}   >
           <h1>Saissez une dimension pour commencer</h1>
-          <div>
-            <input type="text" id="one"  />
-          </div>
-          <Board/>
+          <Board onKeyPress={this.handleKeyPress}/>
         </div>
       );
     }

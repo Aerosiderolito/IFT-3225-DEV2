@@ -11,11 +11,10 @@ class Board extends React.Component {
 
     popUpInit(){
 
+        console.log("test")
         this.state.cellTab = [];
         this.state.dimension = window.prompt("Saissisez une dimension pour le tableau");
         
-
-
         /*Repeter n fois pour remplir le tableau */
 
         for(let i = 0; i <this.state.dimension*this.state.dimension; i++){
@@ -28,6 +27,8 @@ class Board extends React.Component {
         this.setRandom2(this.state.cellTab);
 
         this.printer(this.state.cellTab);
+
+        alert("Après la fermeture de cette fenêtre appuyer sur S pur commencer!");
 
         console.log(this.state.cellTab);
 
@@ -86,11 +87,50 @@ class Board extends React.Component {
    
     }
 
+    handleKeyPress = (event) => {
+
+      document.addEventListener("keydown", event => {
+       console.log(event.key);
+      switch(event.key){
+        case "ArrowUp":
+          this.rightDirection();
+          break;
+        case "ArrowDown":
+          break;
+        case "ArrowLeft":
+          break;
+        case "ArrowRight":
+          break;  
+
+      }}
+      );}
+  
+  rightDirection(){
+    console.log("xd");
+    for(let i=0; i<this.state.dimension*this.state.dimension; i++){
+      let uno,dos,tres,cuatro;
+      uno = this.state.cellTab[i];
+      dos = this.state.cellTab[i+1];
+      tres = this.state.cellTab[i+2];
+      cuatro = this.state.cellTab[i+3];
+
+      let line = [+uno,+dos,+tres,+cuatro];
+
+      let rowNums = line.filter(num=>num);
+      let mNums = this.state.dimension - rowNums.length;
+      let empty = Array(mNums).fill(0);
+
+      
+      
+    }
+  }
+
+
     render() {
       
       return (
         <div className={"Board"}>
-            <button onClick={() => this.popUpInit()}>Click pour commencer</button>
+            <button onKeyPress={this.handleKeyPress} onClick={() => this.popUpInit()}>Click pour choisir une dimension</button>
             <h1 id="score">Score</h1>
             <div id={"tableau"}>
 
