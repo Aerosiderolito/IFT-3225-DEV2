@@ -13,14 +13,6 @@ class Game extends React.Component {
 
 
 
-    start(){
-
-      aaa = window.prompt("Veillez choisir la dimension du tableau");
-
-      
-
-    }
-
     handleKeyPress = (event) => {
 
         document.addEventListener("keydown", event => {

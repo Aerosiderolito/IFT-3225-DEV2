@@ -11,6 +11,7 @@ div.row{
     text-align: center;
     line-height: 100px; /*Ici pour aligner le texte*/
     margin:auto;
+    
    
 }
 
@@ -32,6 +33,7 @@ div#tableau{
     margin-right: 2em;
     border: 2px solid red;
     background-color: yellow;
+    
     
     
     
