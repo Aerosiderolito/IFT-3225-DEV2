@@ -51,10 +51,11 @@ class Game extends React.Component {
         <div className={"Game"} onKeyPress={this.handleKeyPress}  >
           <h1>Saissez une dimension pour commencer</h1>
           <h1 id="score">Score</h1>
-          <Board />
           <div>
-           <input type="text" id="one"  />
-        </div>
+            <input type="text" id="one"  />
+          </div>
+          <Board />
+          
           
 
    

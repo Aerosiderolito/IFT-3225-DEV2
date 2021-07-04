@@ -1,10 +1,11 @@
 #tableau{
     display: flex;
     flex-wrap: wrap;
-    margin: 0 auto;
-  
-    background-color: blue;
-   
+}
+
+div#tableau{
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #score{
@@ -22,4 +23,8 @@ button{
     width: 100px;
     height: 100px;
     background-color: yellow;
+}
+
+div input{
+    margin:auto;
 }

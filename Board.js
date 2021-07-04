@@ -9,25 +9,44 @@ class Board extends React.Component {
       };
     }
 
-    PopUpInit(){
-      
-        this.state.dimension = window.prompt("Saissisez une dimension pour le tableau");
+    popUpInit(){
 
-       
-        for(let i=0; i<(this.state.dimension)*(this.state.dimension); i++){
-           let cell = <div>0</div>;
-            console.log(i);
-            ReactDOM.render(cell,document.getElementById("tableau"));
-            this.state.cellTab.push(cell);
+        this.state.cellTab = [];
+        this.state.dimension = window.prompt("Saissisez une dimension pour le tableau");
+        
+        let cell = <div>0</div>;
+        for(let i=0; i<(this.state.dimension); i++){
+          
+          let line = [];   
+          
+          for(let j = 0 ; j<this.state.dimension;j++){
+            line.push(cell);
+          }
+
+            this.state.cellTab.push(line);
         }
-        ReactDOM.render(this.state.cellTab,document.getElementById("tableau") );
+        console.log(this.state.cellTab);
+        this.printer(this.state.cellTab);
+        /*this.printer(this.state.cellTab);*/
+        
     }
+
+    printer(tabu){
+      let retval = [];
+      for(let i = 0; i< tabu.length; i++){
+        let line = <div className="row">{tabu[i]}</div>
+        retval.push(line);
+      }
+      ReactDOM.render(retval,document.getElementById("tableau") );
+      
+    }
+
     render() {
       
       let xd = "this variable";
       return (
         <div className="Board">
-            <button onClick={() => this.PopUpInit()}>Click pour commencer</button>
+            <button onClick={() => this.popUpInit()}>Click pour commencer</button>
             <div id={"tableau"}>
 
             </div>
