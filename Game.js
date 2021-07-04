@@ -23,20 +23,23 @@ class Game extends React.Component {
 
     handleKeyPress = (event) => {
 
+        document.addEventListener("keydown", event => {
+        console.log(event.key);}
+        )
       /*window.onKeyPress = () => {
         console.log("xd");
       }*/
       /*if(event.key === 'Enter')*/
 
      
-      if(true){
+      /*if(true){
         console.log(event.charCode+' up pressed here! ')
 
         if(event.charCode === "65"){
           console.log("UP");
         }
 
-      }
+      }*/
     }
     
 
