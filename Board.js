@@ -35,7 +35,7 @@ class Board extends React.Component {
 
     setRandom2(tabu){
       let randomC = Math.floor(Math.random()*tabu.length);
-      
+       
       for(let i = 0; i<2; i++){
         let coin = (Math.random());
 
