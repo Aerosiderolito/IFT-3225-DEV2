@@ -136,7 +136,8 @@ class Board extends React.Component {
       
       return (
         <div className={"Board"}>
-            <button onKeyPress={this.handleKeyPress} onClick={() => this.popUpInit()}>Click pour choisir une dimension</button>
+            <button onKeyPress={this.handleKeyPress} onClick={() => this.popUpInit()}>
+              New Game</button>
             <h1 id="score">Score</h1>
             <div id={"tableau"}>
 
