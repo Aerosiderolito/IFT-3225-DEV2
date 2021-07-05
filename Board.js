@@ -11,7 +11,6 @@ class Board extends React.Component {
 
     popUpInit(){
 
-        console.log("test")
         this.state.cellTab = [];
         this.state.dimension = window.prompt("Saissisez une dimension pour le tableau");
         
@@ -35,40 +34,17 @@ class Board extends React.Component {
     }
 
     setRandom2(tabu){
-      let randomC = Math.floor(Math.random()*tabu.length);
       
-      for(let i = 0; i<2; i++){
-
+      for(let i=0; i<2;i++){
+        let randomC = Math.floor(Math.random()*tabu.length);
         let coin = (Math.random());
-
-        if(coin>0.5){
-          // numero 2
-          if(tabu[randomC]==0){
-            tabu[randomC] = 2;
+        if(coin>0.5 && tabu[randomC]==0){
+          tabu[randomC] = 2;
+        }else{
+          tabu[randomC] = 4;
           }
-          else{
-            randomC = Math.floor(Math.random()*this.state.dimension);
-            i--;
-          }
-
-        }
-        else{
-          // numero 4
-          if(tabu[randomC]==0){
-            tabu[randomC] = 4;
-          }
-          else{
-            randomC = Math.floor(Math.random()*this.state.dimension);
-            i--;
-          }
-
-        }
-
-        
-      
-      }
-    }
-
+      }        
+  }
 
     printer(tabu){
       
@@ -99,38 +75,57 @@ class Board extends React.Component {
        console.log(event.key);
       switch(event.key){
         case "ArrowUp":
-          this.rightDirection();
+          
           break;
         case "ArrowDown":
           break;
         case "ArrowLeft":
+          
           break;
         case "ArrowRight":
+          this.rightDirection();
           break;  
 
       }}
       );}
   
   rightDirection(){
-    console.log("xd");
-    for(let i=0; i<this.state.dimension*this.state.dimension; i++){
-      let uno,dos,tres,cuatro;
-      uno = this.state.cellTab[i];
-      dos = this.state.cellTab[i+1];
-      tres = this.state.cellTab[i+2];
-      cuatro = this.state.cellTab[i+3];
-
-      let line = [+uno,+dos,+tres,+cuatro];
-
-      let rowNums = line.filter(num=>num);
-      let mNums = this.state.dimension - rowNums.length;
-      let empty = Array(mNums).fill(0);
-
+    console.log("exec left");
+    let line=[];
+    // loop sur le tableau
+    for(let i=0; i<this.state.cellTab.length; i++){
       
-      
+      line.push(this.state.cellTab[i]);
+      // si on complete une ligne
+      if((i+1)%this.state.dimension==0){
+        console.log("ligne avant le traitement = "+ line);
+        // line = []; Un comment to display line
+
+        for(let j = 0; j<line.length; j++){
+          if(line[j]>0 && j!=this.state.dimension){
+            for(let k = 0; k<line.length; k++){
+
+              if(line[k]>0 && line[k+1]==0){
+                line[k+1] = line[k];
+                line[k]= 0;
+              }
+              if(line[k]=line[k+1] && k < line.length){
+                line[k+1]=line[k]+line[k];
+                line[k]=0;
+
+              }
+
+
+            }
+            
+
+          }
+        }
+        console.log("après le traitement = "+ line);
+        line = []; //Uncomment to display line
     }
   }
-
+  }
 
     render() {
       
