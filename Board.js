@@ -12,7 +12,12 @@ class Board extends React.Component {
     popUpInit(){
 
         this.state.cellTab = [];
-        this.state.dimension = window.prompt("Saissisez une dimension pour le tableau");
+        do{
+          this.state.dimension = window.prompt("Saissisez une dimension pour le tableau");
+    
+        }while(isNaN(+this.state.dimension)|| (+this.state.dimension < 0) || (+this.state.dimension == ""))
+        
+
         
         /*Repeter n fois pour remplir le tableau */
 
