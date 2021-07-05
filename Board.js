@@ -27,7 +27,8 @@ class Board extends React.Component {
 
         this.printer(this.state.cellTab);
 
-        alert("Après la fermeture de cette fenêtre appuyer sur S pur commencer!");
+        //alert commented by mo
+       // alert("Après la fermeture de cette fenêtre appuyer sur S pur commencer!");
 
         console.log(this.state.cellTab);
 
@@ -103,7 +104,29 @@ class Board extends React.Component {
           break;  
 
       }}
-      );}
+      )
+    }
+
+    //function added by mo
+    handleKeyDown(event){
+      document.addEventListener("keydown", event => {
+       console.log(event.key);
+      switch(event.key){
+        case "ArrowUp":
+          
+          break;
+        case "ArrowDown":
+          break;
+        case "ArrowLeft":
+          
+          break;
+        case "ArrowRight":
+          this.rightDirection();
+          break;  
+
+      }}
+      )
+    }
   
   rightDirection(){
     console.log("exec left");
@@ -146,9 +169,12 @@ class Board extends React.Component {
     render() {
       
       return (
-        <div className={"Board"}>
-            <button onKeyPress={this.handleKeyPress} onClick={() => this.popUpInit()}>
+        <div className={"Board"} onKeyDown={this.handleKeyDown} >
+            
+            <button onClick={() => this.popUpInit()}> 
+            
               New Game</button>
+              
             <h1 id="score">Score</h1>
             <div id={"tableau"}>
 

@@ -18,7 +18,7 @@ class Game extends React.Component {
       return (
         <div className={"Game"}   >
           <h1>2048</h1>
-          <Board onKeyPress={this.handleKeyPress}/>
+          <Board/>
         </div>
       );
     }
