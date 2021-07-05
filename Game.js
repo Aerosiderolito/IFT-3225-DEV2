@@ -17,7 +17,7 @@ class Game extends React.Component {
       
       return (
         <div className={"Game"}   >
-          <h1>Saissez une dimension pour commencer</h1>
+          <h1>2048</h1>
           <Board onKeyPress={this.handleKeyPress}/>
         </div>
       );

@@ -76,14 +76,20 @@ class Board extends React.Component {
       let line = [];
 
       for(let i=0; i<=tabu.length; i++){
-        line.push(<span>{tabu[i]}</span>);
+        if(tabu[i]>0){
+          line.push(<td>{tabu[i]}</td>);
+        }
+        else{
+          line.push(<td className={"zero"}>&nbsp;</td>)
+        }
         if(((i+1)%this.state.dimension==0) && i !=0){
-          displayTab.push(<div className="row">{line}</div>);
+          displayTab.push(<tr className="row">{line}</tr>);
           line = [];
         }
       }
    
-       ReactDOM.render(displayTab,document.getElementById("tableau") );
+       ReactDOM.render(<table><thead></thead>
+         <tbody>{displayTab}</tbody></table>,document.getElementById("tableau") );
    
     }
 
