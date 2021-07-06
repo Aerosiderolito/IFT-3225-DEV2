@@ -5,6 +5,7 @@ class Board extends React.Component {
     this.state = {
       dimension: 0,
       cellTab: [],
+      init: 0
       
      
     };
@@ -103,7 +104,7 @@ class Board extends React.Component {
       case "ArrowDown":
         break;
       case "ArrowLeft":
-        
+        this.leftDirection();
         break;
       case "ArrowRight":
         this.rightDirection();
@@ -178,6 +179,49 @@ rightDirection(){
   }
   console.log(retValue + "xd");
   
+}
+this.state.cellTab = retValue;
+this.printer(this.state.cellTab);
+}
+
+leftDirection(){
+  let retValue = []
+  let line=[];
+  // loop sur le tableau
+  for(let i=0; i<this.state.cellTab.length; i++){    
+  //for(let i=this.state.cellTab.length; i>0; i--){
+    line.push(this.state.cellTab[i]);
+
+    //console.log(this.state.cellTab + "xd");  
+    // si on complete une ligne
+    if((i+1)%this.state.dimension==0){
+      //console.log((i-1)%this.state.dimension + "MOMO");
+      console.log("ligne avant le traitement = "+ line);
+      // line = []; Un comment to display line
+      for(let j = line.length-1; j>=0; j--){
+        //console.log("momo1");
+        if(line[j]>0 && j==this.state.dimension-1){
+          //console.log("momo2");
+          for(let k = line.length-1; k>=0; k--){
+            if(line[k]>0 && line[k-1]==0){
+              line[k-1] = line[k];
+              line[k]= 0;              
+              continue;
+            }
+            if(line[k]==line[k-1] && k >= 0){
+              //console.log("momo3");
+              line[k-1]=line[k]+line[k];
+              line[k-1]=0;
+            }
+          }          
+        }
+      }      
+      console.log("après le traitement = "+ line);      
+      retValue = line.concat(retValue); //Uncomment to display line
+      //retValue = retValue.concat(line); //Uncomment to display line
+      line=[];
+  }
+  console.log(retValue + "xd");  
 }
 this.state.cellTab = retValue;
 this.printer(this.state.cellTab);
