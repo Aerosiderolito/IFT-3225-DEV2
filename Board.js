@@ -5,8 +5,26 @@ class Board extends React.Component {
     this.state = {
       dimension: 0,
       cellTab: [],
-      init: 0
       
+      caseBgColors : {
+        deux: "#EEE4DA",
+        quatre: "#EEE1C9",
+        huit: "#EEE1C9",
+        seize: "#F69664" ,
+        treinteDeux: "#F77C5F",
+        soixanteQuate: "#F75F3B"
+      },
+    
+      caseTxtColors : {
+        deux:"#776E65",
+        quatre: "#F77C5F",
+        huit: "#F9F6F2",
+        seize: "#F9F6F2",
+        treinteDeux: "#F9F6F2",
+        soixanteQuatre: "#F75F3B",
+    
+    
+      }
      
     };
   }
@@ -18,9 +36,7 @@ class Board extends React.Component {
         this.state.dimension = +window.prompt("Saissisez une dimension pour le tableau");
   
       }while(isNaN(this.state.dimension)|| (this.state.dimension < 0) || (this.state.dimension == ""))
-      
-
-      
+            
       /*Repeter n fois pour remplir le tableau */
 
       for(let i = 0; i <this.state.dimension*this.state.dimension; i++){
@@ -70,18 +86,50 @@ class Board extends React.Component {
     }
   }
 
+
+
+
+  
+
   printer(tabu){
     
     let displayTab = [];  
     let line = [];
 
     for(let i=0; i<=tabu.length; i++){
-      if(tabu[i]>0){
-        line.push(<td>{tabu[i]}</td>);
+
+      switch(tabu[i]){
+
+        case 0:
+          line.push(<td className={"zero"}>&nbsp;</td>);
+          break;
+        case 2:
+          line.push(<td style={{backgroundColor: this.state.caseBgColors.deux}, {color:this.state.caseTxtColors.deux}} >{tabu[i]}</td>);
+          break;
+        case 4:
+          line.push(<td style={{backgroundColor:this.state.caseBgColors.quatre}, {color:this.state.caseTxtColors.quatre}}>{tabu[i]}</td>);
+          break;
+        case 8:
+          line.push(<td style={{backgroundColor:this.state.caseBgColors.huit}, {color:this.state.caseTxtColors.huit}}>{tabu[i]}</td>);
+          break;
+        case 16:
+          line.push(<td style={{backgroundColor:this.state.caseBgColors.seize}, {color:this.state.caseTxtColors.seize}}>{tabu[i]}</td>);
+          break;
+     
+        case 32:
+          line.push(<td style={{backgroundColor:this.state.caseBgColors.treinteDeux}, {color:this.state.caseTxtColors.treinteDeux}}>{tabu[i]}</td>);
+          break;
+        case 64:
+          line.push(<td style={{backgroundColor:this.state.caseBgColors.soixanteQuatre}, {color:this.state.caseTxtColors.soixanteQuatre}}>{tabu[i]}</td>);
+          break;
+
+        default:
+          line.push(<td>{tabu[i]}</td>);
+          break;
+
       }
-      else{
-        line.push(<td className={"zero"}>&nbsp;</td>)
-      }
+    
+      
       if(((i+1)%this.state.dimension==0) && i !=0){
         displayTab.push(<tr className="row">{line}</tr>);
         line = [];
