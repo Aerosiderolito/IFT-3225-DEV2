@@ -115,6 +115,7 @@ class Board extends React.Component {
 
 rightDirection(){
 
+  let retValue = []
   let line=[];
   // loop sur le tableau
   for(let i=0; i<this.state.cellTab.length; i++){
@@ -149,10 +150,15 @@ rightDirection(){
       }
       
       console.log("après le traitement = "+ line);
-      console.log(this.state.cellTab);
-      line = []; //Uncomment to display line
+      
+      retValue = retValue.concat(line); //Uncomment to display line
+      line=[];
   }
+  console.log(retValue + "xd");
+  
 }
+this.state.cellTab = retValue;
+this.printer(this.state.cellTab);
 }
 
   render() {
