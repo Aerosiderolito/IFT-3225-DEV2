@@ -98,7 +98,7 @@ class Board extends React.Component {
      console.log(event.key);
     switch(event.key){
       case "ArrowUp":
-        
+        this.addSquare();
         break;
       case "ArrowDown":
         break;
@@ -112,6 +112,32 @@ class Board extends React.Component {
     }}
     )
   }
+
+addSquare = () => {
+  let randomCase; // case aléatoire
+  let randomCoin = Math.random(); // probabilité de 2 ou 4
+
+    
+
+    do{
+      randomCase = this.state.cellTab[Math.floor(Math.random()*this.state.cellTab.length)];
+      console.log(randomCase);
+      
+    }while(this.state.cellTab[randomCase]>0);
+
+      
+  
+      if (randomCoin>0.5){ 
+        this.state.cellTab[randomCase]=2; 
+      }
+      else{
+        this.state.cellTab[randomCase]=4; 
+      }
+
+
+  
+  this.printer(this.state.cellTab);
+}
 
 rightDirection(){
 
@@ -141,11 +167,7 @@ rightDirection(){
               line[k]=0;
 
             }
-
-
           }
-          
-
         }
       }
       
