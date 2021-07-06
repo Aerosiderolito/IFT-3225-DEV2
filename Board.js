@@ -168,11 +168,12 @@ rightDirection(){
               line[k+1] = line[k];
               line[k]= 0;
               
-              continue;
+              break;
             }
             if(line[k]==line[k+1] && k < line.length-1){
               line[k+1]=line[k]+line[k];
               line[k]=0;
+              break;
 
             }
           }
@@ -192,46 +193,52 @@ rightDirection(){
 }
 
 leftDirection(){
-  let retValue = []
+  let retValue = [];
   let line=[];
   // loop sur le tableau
   for(let i=0; i<this.state.cellTab.length; i++){    
-  //for(let i=this.state.cellTab.length; i>0; i--){
+
     line.push(this.state.cellTab[i]);
 
-    //console.log(this.state.cellTab + "xd");  
     // si on complete une ligne
     if((i+1)%this.state.dimension==0){
-      //console.log((i-1)%this.state.dimension + "MOMO");
+   
       console.log("ligne avant le traitement = "+ line);
-      // line = []; Un comment to display line
+
       for(let j = line.length-1; j>=0; j--){
-        //console.log("momo1");
-        if(line[j]>0 && j==this.state.dimension-1){
-          //console.log("momo2");
+       
+        if(line[j]>0 && j>0){
+      
           for(let k = line.length-1; k>=0; k--){
             if(line[k]>0 && line[k-1]==0){
               line[k-1] = line[k];
               line[k]= 0;              
-              continue;
+              break;
             }
-            if(line[k]==line[k-1] && k >= 0){
-              //console.log("momo3");
+            if(k > 0 && line[k]==line[k-1]){
+
               line[k-1]=line[k]+line[k];
-              line[k-1]=0;
+              line[k]=0;
+              break;
             }
           }          
         }
-      }      
-      console.log("après le traitement = "+ line);      
-      retValue = line.concat(retValue); //Uncomment to display line
-      //retValue = retValue.concat(line); //Uncomment to display line
-      line=[];
+        
+      } 
+        console.log("après le traitement = "+ line);  
+          
+          
+      retValue = retValue.concat(line); 
+      line=[];   
+      
+      
   }
-  console.log(retValue + "xd");  
+
 }
-this.state.cellTab = retValue;
-this.addSquare();
+  
+  this.state.cellTab = retValue;
+  console.log(this.state.cellTab + " this thing");
+  this.addSquare();
 }
 
   render() {
