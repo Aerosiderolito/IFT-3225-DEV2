@@ -5,6 +5,7 @@ class Board extends React.Component {
     this.state = {
       dimension: 0,
       cellTab: [],
+      score: 0,
       
       caseBgColors : {
         deux: "#EEE4DA",
@@ -30,11 +31,15 @@ class Board extends React.Component {
   }
 
   popUpInit(){
-
+      this.state.score = 0;
+      this.state.dimension = 0;
       this.state.cellTab = [];
       do{
         this.state.dimension = +window.prompt("Saissisez une dimension pour le tableau");
-  
+        console.log(this.state.dimension);
+        if (this.state.dimension==0){
+          return;
+        }
       }while(isNaN(this.state.dimension)|| (this.state.dimension < 0) || (this.state.dimension == ""))
             
       /*Repeter n fois pour remplir le tableau */
@@ -50,8 +55,6 @@ class Board extends React.Component {
 
       this.printer(this.state.cellTab);
 
-      //alert commented by mo
-     //alert("Après la fermeture de cette fenêtre appuyer sur S pur commencer!");
 
       console.log(this.state.cellTab);
 
@@ -177,7 +180,7 @@ addSquare = () => {
 
     do{
       randomCase = Math.floor(Math.random()*this.state.cellTab.length);
-      console.log(randomCase);
+   
       
     }while(this.state.cellTab[randomCase]>0);
 
@@ -212,18 +215,20 @@ rightDirection(){
         if(line[j]>0 && j!=this.state.dimension-1){
           for(let k = 0; k<line.length; k++){
 
-            if(line[k]>0 && line[k+1]==0){
-              line[k+1] = line[k];
-              line[k]= 0;
-              
-              break;
-            }
             if(line[k]==line[k+1] && k < line.length-1){
               line[k+1]=line[k]+line[k];
               line[k]=0;
               break;
 
             }
+
+            if(line[k]>0 && line[k+1]==0){
+              line[k+1] = line[k];
+              line[k]= 0;
+              
+           
+            }
+            
           }
         }
       }
