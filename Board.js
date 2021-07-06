@@ -149,7 +149,7 @@ rightDirection(){
       }
       
       console.log("après le traitement = "+ line);
-      
+      console.log(this.state.cellTab);
       line = []; //Uncomment to display line
   }
 }
