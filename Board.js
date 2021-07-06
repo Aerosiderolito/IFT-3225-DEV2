@@ -115,13 +115,20 @@ class Board extends React.Component {
   }
 
 addSquare = () => {
+
+  // verifier qu'il y a la place ...
+  let zeros = this.state.cellTab.filter(cell => cell==0);
+  if(zeros.length==0){
+    return;
+  }
+
   let randomCase; // case aléatoire
   let randomCoin = Math.random(); // probabilité de 2 ou 4
 
     
 
     do{
-      randomCase = this.state.cellTab[Math.floor(Math.random()*this.state.cellTab.length)];
+      randomCase = Math.floor(Math.random()*this.state.cellTab.length);
       console.log(randomCase);
       
     }while(this.state.cellTab[randomCase]>0);
@@ -150,7 +157,7 @@ rightDirection(){
     line.push(this.state.cellTab[i]);
     // si on complete une ligne
     if((i+1)%this.state.dimension==0){
-      console.log("ligne avant le traitement = "+ line);
+     
       // line = []; Un comment to display line
 
       for(let j = 0; j<line.length; j++){
@@ -172,16 +179,16 @@ rightDirection(){
         }
       }
       
-      console.log("après le traitement = "+ line);
+
       
       retValue = retValue.concat(line); //Uncomment to display line
       line=[];
   }
-  console.log(retValue + "xd");
+
   
 }
-this.state.cellTab = retValue;
-this.printer(this.state.cellTab);
+  this.state.cellTab = retValue;
+  this.addSquare();
 }
 
 leftDirection(){
@@ -224,7 +231,7 @@ leftDirection(){
   console.log(retValue + "xd");  
 }
 this.state.cellTab = retValue;
-this.printer(this.state.cellTab);
+this.addSquare();
 }
 
   render() {
