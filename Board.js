@@ -5,7 +5,6 @@ class Board extends React.Component {
     this.state = {
       dimension: 0,
       cellTab: [],
-      score: 0,
       
       caseBgColors : {
         deux: "#EEE4DA",
@@ -31,20 +30,20 @@ class Board extends React.Component {
   }
 
   popUpInit(){
-      this.state.score = 0;
-      this.state.dimension = 0;
-      this.state.cellTab = [];
-      do{
-        this.state.dimension = +window.prompt("Saissisez une dimension pour le tableau");
-        console.log(this.state.dimension);
-        if (this.state.dimension==0){
-          return;
-        }
-      }while(isNaN(this.state.dimension)|| (this.state.dimension < 0) || (this.state.dimension == ""))
-            
-      /*Repeter n fois pour remplir le tableau */
 
+      this.state.cellTab = [];
+        do{
+        this.state.dimension = +window.prompt("Saissisez une dimension pour le tableau");
+  
+      }while(isNaN(this.state.dimension)|| (this.state.dimension < 0) || (this.state.dimension == ""))
+      this.state.dimension = 4;   
+      /*Repeter n fois pour remplir le tableau */
+      // this.state.cellTab=[0,4,4,0,
+      //                     0,0,0,0,
+      //                     0,0,0,0,
+      //                     2,2,2,0]
       for(let i = 0; i <this.state.dimension*this.state.dimension; i++){
+
         this.state.cellTab.push(0);
         
       }
@@ -55,8 +54,10 @@ class Board extends React.Component {
 
       this.printer(this.state.cellTab);
 
+      //alert commented by mo
+     //alert("Après la fermeture de cette fenêtre appuyer sur S pur commencer!");
 
-      console.log(this.state.cellTab);
+      //console.log(this.state.cellTab);
 
   }
 
@@ -159,6 +160,7 @@ class Board extends React.Component {
         break;
       case "ArrowRight":
         this.rightDirection();
+        this.addSquare();
         break;  
 
     }}
@@ -180,7 +182,7 @@ addSquare = () => {
 
     do{
       randomCase = Math.floor(Math.random()*this.state.cellTab.length);
-   
+      console.log(randomCase);
       
     }while(this.state.cellTab[randomCase]>0);
 
@@ -194,55 +196,40 @@ addSquare = () => {
       }
 
 
-  
+  console.log(this.state.cellTab + "MATIRCE");
   this.printer(this.state.cellTab);
 }
 
-rightDirection(){
+rightDirection() {
 
   let retValue = []
-  let line=[];
+  let line = [];
   // loop sur le tableau
-  for(let i=0; i<this.state.cellTab.length; i++){
-    
-    line.push(this.state.cellTab[i]);
-    // si on complete une ligne
-    if((i+1)%this.state.dimension==0){
-     
-      // line = []; Un comment to display line
+  for (let i = 0; i < this.state.cellTab.length; i++) {
 
-      for(let j = 0; j<line.length; j++){
-        if(line[j]>0 && j!=this.state.dimension-1){
-          for(let k = 0; k<line.length; k++){
-
-            if(line[k]==line[k+1] && k < line.length-1){
-              line[k+1]=line[k]+line[k];
-              line[k]=0;
-              break;
-
-            }
-
-            if(line[k]>0 && line[k+1]==0){
-              line[k+1] = line[k];
-              line[k]= 0;
-              
-           
-            }
-            
+      line.push(this.state.cellTab[i]);
+      // si on complete une ligne
+      if ((i + 1) % this.state.dimension == 0) {
+          for (let j = 0; j < line.length; j++) { // chaque ligne
+              if (line[j] > 0 && j != this.state.dimension-1) {
+                  if (line[j] == line[j + 1] && j < line.length-1 )  {
+                      line[j + 1] = line[j] + line[j];
+                      line[j] = 0;
+                      break;
+                  }
+                  if (line[j] > 0 && line[j + 1] == 0) {
+                      line[j + 1] = line[j];
+                      line[j] = 0;
+                  }
+                  console.log(line + "  LINE");
+              }
           }
-        }
+          //console.log(line+"  LINE") ;
+          retValue = retValue.concat(line); //
+          line = [];
       }
-      
-
-      
-      retValue = retValue.concat(line); //Uncomment to display line
-      line=[];
   }
-
-  
-}
   this.state.cellTab = retValue;
-  this.addSquare();
 }
 
 leftDirection(){
@@ -259,36 +246,23 @@ leftDirection(){
       console.log("ligne avant le traitement = "+ line);
 
       for(let j = line.length-1; j>=0; j--){
-       
-        if(line[j]>0 && j>0){
-      
-          for(let k = line.length-1; k>=0; k--){
-            if(line[k]>0 && line[k-1]==0){
-              line[k-1] = line[k];
-              line[k]= 0;              
+          if(line[j] > 0 && j != 0){
+            if(line[j]>0 && line[j-1]==0){
+              line[j-1] = line[j];
+              line[j]= 0;              
+            }
+            if(j > 0 && line[j]==line[j-1]){
+              line[j-1]=line[j]+line[j];
+              line[j]=0;
               break;
             }
-            if(k > 0 && line[k]==line[k-1]){
-
-              line[k-1]=line[k]+line[k];
-              line[k]=0;
-              break;
-            }
-          }          
-        }
-        
+          }
       } 
-        console.log("après le traitement = "+ line);  
-          
-          
+      //console.log("après le traitement = "+ line);  
       retValue = retValue.concat(line); 
       line=[];   
-      
-      
   }
-
 }
-  
   this.state.cellTab = retValue;
   console.log(this.state.cellTab + " this thing");
   this.addSquare();
