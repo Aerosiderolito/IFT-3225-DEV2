@@ -4,24 +4,27 @@ class Board extends React.Component {
     super(props);
     this.state = {
       dimension: 0,
+      score: 0,
       cellTab: [],
       
       caseBgColors : {
         deux: "#EEE4DA",
         quatre: "#EEE1C9",
-        huit: "#EEE1C9",
+        huit: "#F3B27A",
         seize: "#F69664" ,
         treinteDeux: "#F77C5F",
-        soixanteQuate: "#F75F3B"
+        soixanteQuatre: "#F75F3B",
+        cVingHuit:"#EDD073",
       },
     
       caseTxtColors : {
         deux:"#776E65",
-        quatre: "#F77C5F",
+        quatre: "#776E65",
         huit: "#F9F6F2",
         seize: "#F9F6F2",
         treinteDeux: "#F9F6F2",
-        soixanteQuatre: "#F75F3B",
+        soixanteQuatre: "#F9F6F2",
+        cVingHuit:"#F9F6F2",
     
     
       }
@@ -36,12 +39,7 @@ class Board extends React.Component {
         this.state.dimension = +window.prompt("Saissisez une dimension pour le tableau");
   
       }while(isNaN(this.state.dimension)|| (this.state.dimension < 0) || (this.state.dimension == ""))
-       
-      /*Repeter n fois pour remplir le tableau */
-      // this.state.cellTab=[0,4,4,0,
-      //                     0,0,0,0,
-      //                     0,0,0,0,
-      //                     2,2,2,0]
+
       for(let i = 0; i <this.state.dimension*this.state.dimension; i++){
 
         this.state.cellTab.push(0);
@@ -54,10 +52,6 @@ class Board extends React.Component {
 
       this.printer(this.state.cellTab);
 
-      //alert commented by mo
-     //alert("Après la fermeture de cette fenêtre appuyer sur S pur commencer!");
-
-      //console.log(this.state.cellTab);
 
   }
 
@@ -90,10 +84,16 @@ class Board extends React.Component {
     }
   }
 
-
-
-
+  setScore(num){
+    this.state.score = +this.state.score+num;
+    console.log(num+" "+this.state.score);
+    ReactDOM.render(<h4>Score {this.state.score}</h4>,document.getElementById("score") );
+  }
   
+
+
+
+
 
   printer(tabu){
     
@@ -108,25 +108,27 @@ class Board extends React.Component {
           line.push(<td className={"zero"}>&nbsp;</td>);
           break;
         case 2:
-          line.push(<td style={{backgroundColor: this.state.caseBgColors.deux}, {color:this.state.caseTxtColors.deux}} >{tabu[i]}</td>);
+          line.push(<td style={{color:this.state.caseTxtColors.deux, backgroundColor: this.state.caseBgColors.deux} } >{tabu[i]}</td>);
           break;
         case 4:
-          line.push(<td style={{backgroundColor:this.state.caseBgColors.quatre}, {color:this.state.caseTxtColors.quatre}}>{tabu[i]}</td>);
+          line.push(<td style={{color:this.state.caseTxtColors.quatre, backgroundColor:this.state.caseBgColors.quatre}}>{tabu[i]}</td>);
           break;
         case 8:
-          line.push(<td style={{backgroundColor:this.state.caseBgColors.huit}, {color:this.state.caseTxtColors.huit}}>{tabu[i]}</td>);
+          line.push(<td style={{color:this.state.caseTxtColors.huit, backgroundColor:this.state.caseBgColors.huit} }>{tabu[i]}</td>);
           break;
         case 16:
-          line.push(<td style={{backgroundColor:this.state.caseBgColors.seize}, {color:this.state.caseTxtColors.seize}}>{tabu[i]}</td>);
+          line.push(<td style={{color:this.state.caseTxtColors.seize, backgroundColor:this.state.caseBgColors.seize}}>{tabu[i]}</td>);
           break;
      
         case 32:
-          line.push(<td style={{backgroundColor:this.state.caseBgColors.treinteDeux}, {color:this.state.caseTxtColors.treinteDeux}}>{tabu[i]}</td>);
+          line.push(<td style={{color:this.state.caseTxtColors.treinteDeux, backgroundColor:this.state.caseBgColors.treinteDeux} }>{tabu[i]}</td>);
           break;
         case 64:
-          line.push(<td style={{backgroundColor:this.state.caseBgColors.soixanteQuatre}, {color:this.state.caseTxtColors.soixanteQuatre}}>{tabu[i]}</td>);
+          line.push(<td style={{color:this.state.caseTxtColors.soixanteQuatre, backgroundColor:this.state.caseBgColors.soixanteQuatre}}>{tabu[i]}</td>);
           break;
-
+        case 128:
+          line.push(<td style={{color:this.state.caseTxtColors.cVingHuit, backgroundColor:this.state.caseBgColors.cVingHuit}}>{tabu[i]}</td>);
+          break;
         default:
           line.push(<td>{tabu[i]}</td>);
           break;
@@ -190,7 +192,7 @@ class Board extends React.Component {
         line = [];
       }
     }
-    //console.log(transp);
+
 
     transp = transp[0].map((_, colIndex) => transp.map(row => row[colIndex]));
 
@@ -201,14 +203,11 @@ class Board extends React.Component {
       
     }
     
-   
-    console.log(retValue);
     
    for(var t = 0; t<this.state.cellTab.length-1;t++)
     {
       this.state.cellTab[t]=retValue[t];
     }
-    console.log(this.state.cellTab + "MOMO");
 
   }
 
@@ -227,7 +226,6 @@ addSquare = () => {
 
     do{
       randomCase = Math.floor(Math.random()*this.state.cellTab.length);
-      console.log(randomCase);
       
     }while(this.state.cellTab[randomCase]>0);
 
@@ -240,47 +238,44 @@ addSquare = () => {
         this.state.cellTab[randomCase]=4; 
       }
 
-
-  console.log(this.state.cellTab + "MATIRCE");
   this.printer(this.state.cellTab);
 }
 
 rightDirection() {
-  console.log(this.state.cellTab +"MATRICE TRANSPOSE ENTERED RIGHT");   
-  //console.log("RIGHT ENTERED")
+
   let retValue = []
   let line = [];
   // loop sur le tableau
   for (let i = 0; i < this.state.cellTab.length; i++) {
-    //console.log("LOOP SUR LE TABLEAU ENTERED")
+
       line.push(this.state.cellTab[i]);
       // si on complete une ligne
       if ((i + 1) % this.state.dimension == 0) {
-        //console.log("1ST IF ENTERED")
+
           for (let j = 0; j < line.length; j++) { // chaque ligne
-            //console.log("2nt FOR ENTERED")
+   
               if (line[j] > 0 && j != this.state.dimension-1) {
                   if (line[j] == line[j + 1] && j < line.length-1 )  {
-                    //console.log("IF OF LINE FOR ENTERED")
+                      this.setScore(line[j]);
                       line[j + 1] = line[j] + line[j];
                       line[j] = 0;
                       break;
                   }
                   if (line[j] > 0 && line[j + 1] == 0) {
-                    console.log("IF OF LINE FOR ENTERED")
+                      
                       line[j + 1] = line[j];
                       line[j] = 0;
+                      
                   }
-                  //console.log(line + "  LINE");
+      
               }
           }
-          //console.log(line+"  LINE") ;
+   
           retValue = retValue.concat(line); //
           line = [];
       }
   }
   this.state.cellTab = retValue;
-  console.log(this.state.cellTab + "going out of right");
 }
 
 leftDirection(){
@@ -294,7 +289,6 @@ leftDirection(){
     // si on complete une ligne
     if((i+1)%this.state.dimension==0){
    
-      console.log("ligne avant le traitement = "+ line);
 
       for(let j = line.length-1; j>=0; j--){
           if(line[j] > 0 && j != 0){
@@ -303,49 +297,61 @@ leftDirection(){
               line[j]= 0;              
             }
             if(j > 0 && line[j]==line[j-1]){
+              this.setScore(line[j]);
               line[j-1]=line[j]+line[j];
               line[j]=0;
+              
               break;
             }
           }
       } 
-      //console.log("après le traitement = "+ line);  
+
       retValue = retValue.concat(line); 
       line=[];   
   }
 }
   this.state.cellTab = retValue;
-  console.log(this.state.cellTab + " this thing");
+
   
 }
 
 upDirection(){
-this.transposeMatrix(this.state.cellTab, this.state.dimension);
-
-  //console.log("UP ENTERED");
+  
+  this.transposeMatrix(this.state.cellTab, this.state.dimension);
   this.leftDirection();
   this.transposeMatrix(this.state.cellTab, this.state.dimension);
-  console.log(this.state.cellTab);
+
+
 }
 
 downDirection(){
-  this.transposeMatrix(this.state.cellTab, this.state.dimension);
-  
-    //console.log("UP ENTERED");
+    this.transposeMatrix(this.state.cellTab, this.state.dimension);
     this.rightDirection();
     this.transposeMatrix(this.state.cellTab, this.state.dimension);
-    console.log(this.state.cellTab);
+
   }
 
   render() {
     
     return (
       <div className={"Board"} >
-          <button onClick={this.handleKeyPress} > 
           
-            New Game</button>
+            <div className={"flex_principal"}>
             
-          <h1 id="score">Score</h1>
+            <section>
+              <h1>2048</h1>
+              <h2 id="score">Score</h2>
+
+            </section>
+
+            <aside>
+              <button onClick={this.handleKeyPress} > New Game</button>
+            </aside>
+           
+            
+
+            </div>
+          
           <div id={"tableau"}>
 
           </div>

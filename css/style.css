@@ -63,19 +63,26 @@ button{
 }
 
 
+.flex_principal{
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+
 h1{
     font-size: 80px;
   
     text-align:left;
     margin:auto;
     font-weight: bold;
-
 }
 
 
-#score{
-    margin-bottom: 1em;
-}
+
+
 
 table{
     font-weight: bold;
