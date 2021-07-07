@@ -19,7 +19,7 @@ class Game extends React.Component {
         <div  >
           
           <Board/>
-          <footer>César Rodriguez - Mohammad Naim </footer>
+          <footer><a href="https://mesosiderito.space">César Rodriguez</a> - Mohammad Naim </footer>
         </div>
 
       );

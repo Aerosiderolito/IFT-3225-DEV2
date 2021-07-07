@@ -90,11 +90,6 @@ class Board extends React.Component {
     ReactDOM.render(<div> {this.state.score}</div>,document.getElementById("score") );
   }
   
-
-
-
-
-
   printer(tabu){
     
     let displayTab = [];  
@@ -216,6 +211,9 @@ addSquare = () => {
   // verifier qu'il y a la place ...
   let zeros = this.state.cellTab.filter(cell => cell==0);
   if(zeros.length==0){
+    for(let i = 0; i < this.state.cellTab.length; i++){
+      
+    }
     return;
   }
 
