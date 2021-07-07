@@ -146,12 +146,16 @@ class Board extends React.Component {
   }
 
   handleKeyPress = (event) => {
-    this.popUpInit()
+    this.popUpInit();
     document.addEventListener("keydown", event => {
      console.log(event.key);
     switch(event.key){
       case "ArrowUp":
-        this.addSquare();
+       
+        let matrix = [0,1,2,
+                      4,5,6,
+                      8,9,10];
+        this.transposeMatrix(matrix,3);
         break;
       case "ArrowDown":
         break;
@@ -165,6 +169,36 @@ class Board extends React.Component {
 
     }}
     )
+  }
+
+  transposeMatrix = (matrix, dimension) =>{
+ 
+    let line = [];
+    let retValue = [];
+    let transp = []
+    // obtenir les lignes
+    for(let i = 0 ; i<matrix.length ; i++){
+      line.push(matrix[i]);
+      if((i+1)%dimension==0 ){
+        
+        transp.push(line);
+        line = [];
+      }
+    }
+    console.log(transp);
+
+    transp = transp[0].map((_, colIndex) => transp.map(row => row[colIndex]));
+
+    for(let i = 0; i<dimension ; i++){
+      for(let j = 0; j <dimension; j++){
+        retValue.push(transp[i][j]);
+      }
+    }
+    
+   
+    console.log(retValue);
+    
+
   }
 
 addSquare = () => {
