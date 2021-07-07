@@ -36,7 +36,7 @@ class Board extends React.Component {
         this.state.dimension = +window.prompt("Saissisez une dimension pour le tableau");
   
       }while(isNaN(this.state.dimension)|| (this.state.dimension < 0) || (this.state.dimension == ""))
-      this.state.dimension = 4;   
+       
       /*Repeter n fois pour remplir le tableau */
       // this.state.cellTab=[0,4,4,0,
       //                     0,0,0,0,
@@ -151,16 +151,21 @@ class Board extends React.Component {
      console.log(event.key);
     switch(event.key){
       case "ArrowUp":
-       
-        let matrix = [0,1,2,
-                      4,5,6,
-                      8,9,10];
-        this.transposeMatrix(matrix,3);
+        this.upDirection();
+        this.printer(this.state.cellTab);
+        // let matrix = [0,1,2,
+        //               4,5,6,
+        //               8,9,10];
+        
         break;
       case "ArrowDown":
+        this.downDirection();
+        //this.printer(this.state.cellTab);
+        this.addSquare();
         break;
       case "ArrowLeft":
         this.leftDirection();
+        this.addSquare();
         break;
       case "ArrowRight":
         this.rightDirection();
@@ -185,19 +190,25 @@ class Board extends React.Component {
         line = [];
       }
     }
-    console.log(transp);
+    //console.log(transp);
 
     transp = transp[0].map((_, colIndex) => transp.map(row => row[colIndex]));
 
     for(let i = 0; i<dimension ; i++){
       for(let j = 0; j <dimension; j++){
-        retValue.push(transp[i][j]);
+        this.state.cellTab[i]=retValue.push(transp[i][j]);
       }
+      
     }
     
    
     console.log(retValue);
     
+   for(var t = 0; t<this.state.cellTab.length-1;t++)
+    {
+      this.state.cellTab[t]=retValue[t];
+    }
+    console.log(this.state.cellTab + "MOMO");
 
   }
 
@@ -235,27 +246,32 @@ addSquare = () => {
 }
 
 rightDirection() {
-
+  console.log(this.state.cellTab +"MATRICE TRANSPOSE ENTERED RIGHT");   
+  //console.log("RIGHT ENTERED")
   let retValue = []
   let line = [];
   // loop sur le tableau
   for (let i = 0; i < this.state.cellTab.length; i++) {
-
+    //console.log("LOOP SUR LE TABLEAU ENTERED")
       line.push(this.state.cellTab[i]);
       // si on complete une ligne
       if ((i + 1) % this.state.dimension == 0) {
+        //console.log("1ST IF ENTERED")
           for (let j = 0; j < line.length; j++) { // chaque ligne
+            //console.log("2nt FOR ENTERED")
               if (line[j] > 0 && j != this.state.dimension-1) {
                   if (line[j] == line[j + 1] && j < line.length-1 )  {
+                    //console.log("IF OF LINE FOR ENTERED")
                       line[j + 1] = line[j] + line[j];
                       line[j] = 0;
                       break;
                   }
                   if (line[j] > 0 && line[j + 1] == 0) {
+                    console.log("IF OF LINE FOR ENTERED")
                       line[j + 1] = line[j];
                       line[j] = 0;
                   }
-                  console.log(line + "  LINE");
+                  //console.log(line + "  LINE");
               }
           }
           //console.log(line+"  LINE") ;
@@ -264,6 +280,7 @@ rightDirection() {
       }
   }
   this.state.cellTab = retValue;
+  console.log(this.state.cellTab + "going out of right");
 }
 
 leftDirection(){
@@ -299,8 +316,26 @@ leftDirection(){
 }
   this.state.cellTab = retValue;
   console.log(this.state.cellTab + " this thing");
-  this.addSquare();
+  
 }
+
+upDirection(){
+this.transposeMatrix(this.state.cellTab, this.state.dimension);
+
+  //console.log("UP ENTERED");
+  this.leftDirection();
+  this.transposeMatrix(this.state.cellTab, this.state.dimension);
+  console.log(this.state.cellTab);
+}
+
+downDirection(){
+  this.transposeMatrix(this.state.cellTab, this.state.dimension);
+  
+    //console.log("UP ENTERED");
+    this.rightDirection();
+    this.transposeMatrix(this.state.cellTab, this.state.dimension);
+    console.log(this.state.cellTab);
+  }
 
   render() {
     
