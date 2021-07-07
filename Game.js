@@ -19,7 +19,9 @@ class Game extends React.Component {
         <div  >
           
           <Board/>
+          <footer>César Rodriguez - Mohammad Naim </footer>
         </div>
+
       );
     }
   }

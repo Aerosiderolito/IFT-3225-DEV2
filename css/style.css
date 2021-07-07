@@ -37,11 +37,36 @@ html{
     min-width: 700px;
 }
 
-
-#score{
+.flex_display section, .flex_display aside{
+    background-color:#BBADA0;
+    color:#EEE4DA;
+    width:111px;
+    height: 55px;
+    padding-top:5px;
     text-align: center;
+    font-weight: bolder;
+ 
+    margin-left: 5px;
+    margin-right: 1px;
+    
+    
+    border-radius: 5px 5px 5px 5px;
+    
 }
 
+.flex_display aside div:last-child, .flex_display section div:last-child{
+    
+    color:#FFFFFF;
+    font-weight: bolder;
+    font-size:25px;
+
+}
+
+.flex_display {
+    display: flex;
+    flex-direction: row;
+    
+}
 button{
 
   
@@ -49,7 +74,7 @@ button{
     border-radius: 3px;
 
     text-decoration: none;
-    color: #f9f6f2;
+    color: #F9F6F2;
     height: 45px;
     border:none;
     width: 120px;
@@ -57,27 +82,35 @@ button{
     font-weight: bold;
     font-size: large;
     text-align: center;
-    float: right;
     font-family: 'Clear Sans', arial;
     
 }
 
 
-.flex_principal{
+.flex_principal, .flex_display_secondaire{
+
     display:flex;
     flex-direction:row;
-    align-items: center;
-    margin-left:auto;
-    margin-right:auto;
+    
+    justify-content: center;
+
 }
 
 
-h1{
+section h1{
     font-size: 80px;
-  
+    
     text-align:left;
-    margin:auto;
+    margin-right:1.5em;
+    margin-top: 0;
+    margin-bottom:0;
+
     font-weight: bold;
+}
+
+div p{
+    margin-right: 10em;
+    text-align:left;
 }
 
 
@@ -111,3 +144,10 @@ td.zero{
     background-color:#CDC1B4;
 }
 
+footer{
+    margin-top: 3em;
+    border-top : 1px solid #BBADA0;
+    padding-top: 2em;
+    
+    text-align: center;
+}

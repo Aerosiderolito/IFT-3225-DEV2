@@ -87,7 +87,7 @@ class Board extends React.Component {
   setScore(num){
     this.state.score = +this.state.score+num;
     console.log(num+" "+this.state.score);
-    ReactDOM.render(<h4>Score {this.state.score}</h4>,document.getElementById("score") );
+    ReactDOM.render(<div> {this.state.score}</div>,document.getElementById("score") );
   }
   
 
@@ -340,18 +340,41 @@ downDirection(){
             
             <section>
               <h1>2048</h1>
-              <h2 id="score">Score</h2>
-
+            
+              
             </section>
 
             <aside>
-              <button onClick={this.handleKeyPress} > New Game</button>
+              
+              <div className={"flex_display"}>
+
+                <section>
+                  <div >SCORE</div>
+                  <div id="score">0</div>
+                </section>
+
+                <aside>
+                  <div>BEST</div>
+                  <div>0</div>
+                  
+                </aside>
+                
+              </div>
             </aside>
-           
+            
             
 
             </div>
-          
+            <div className={"flex_display_secondaire"}>
+              <section>
+                <p>Voici notre tp pour le cours 3225 🔥</p>
+              </section>
+              <aside>
+              <button onClick={this.handleKeyPress} > New Game</button>
+
+              </aside>
+            </div>
+            
           <div id={"tableau"}>
 
           </div>
