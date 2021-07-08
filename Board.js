@@ -5,6 +5,7 @@ class Board extends React.Component {
     this.state = {
       dimension: 0,
       score: 0,
+      winCase: 64, // objectif de victoire
       cellTab: [],
       
       caseBgColors : {
@@ -170,31 +171,30 @@ class Board extends React.Component {
      console.log(event.key);
     switch(event.key){
       case "ArrowUp":
+
         this.upDirection();
-        //if (this.verifyEnd()==false){
-          this.addSquare();
-       // }
+        this.addSquare();
+        
+
         
         break;
       case "ArrowDown":
         this.downDirection();
-        //if (this.verifyEnd()==false){
-          this.addSquare();
-       // }
-        
+        this.addSquare();
+
         break;
       case "ArrowLeft":
         this.leftDirection();
-        //if (this.verifyEnd()==false){
-          this.addSquare();
-        //}
+        this.addSquare();
+   
+
         
         break;
       case "ArrowRight":
         this.rightDirection();
-        //if (this.verifyEnd()==false){
-          this.addSquare();
-       // }
+        this.addSquare();
+
+
         break;  
 
     }}
@@ -234,13 +234,21 @@ class Board extends React.Component {
 
   }
 
+verifyVictory(tab){
+
+  let retVal = tab.filter(cell => cell==this.state.winCase);
+  if(retVal.length == 0){
+    return false;
+  }
+  else{
+    alert("Vous avez gagné!");
+    return true;
+  }
+  
+}
+
 addSquare = () => {
 
-  // verifier qu'il y a la place ...
-  //if(this.verifyEnd() == true){
-    //console.log("STOP");
-  //}
-  
   let zeros = this.state.cellTab.filter(cell => cell==0);
   if(zeros.length==0){
     console.log("ENTERED");
@@ -275,7 +283,7 @@ addSquare = () => {
 }
 
 rightDirection() {
-
+  
   let retValue = []
   let line = [];
   // loop sur le tableau
@@ -308,10 +316,12 @@ rightDirection() {
           line = [];
       }
   }
+  this.verifyVictory(this.state.cellTab);
   this.state.cellTab = retValue;
 }
 
 leftDirection(){
+  
   let retValue = [];
   let line=[];
   // loop sur le tableau
@@ -343,6 +353,7 @@ leftDirection(){
       line=[];   
   }
 }
+this.verifyVictory(this.state.cellTab);
   this.state.cellTab = retValue;
 
   
