@@ -42,7 +42,7 @@ class Board extends React.Component {
 
       for(let i = 0; i <this.state.dimension*this.state.dimension; i++){
 
-        this.state.cellTab.push(0);
+        this.state.cellTab.push(+0);
         
       }
 
@@ -86,7 +86,7 @@ class Board extends React.Component {
 
   setScore(num){
     this.state.score = +this.state.score+num;
-    console.log(num+" "+this.state.score);
+    //console.log(num+" "+this.state.score);
     ReactDOM.render(<div> {this.state.score}</div>,document.getElementById("score") );
   }
   
@@ -142,6 +142,27 @@ class Board extends React.Component {
  
   }
 
+  verifyEnd(){
+    let tempUp = this.state.cellTab.slice();
+    this.upDirection();
+    tempUp=(JSON.stringify(tempUp)===JSON.stringify(this.state.cellTab));
+
+    let tempDown = this.state.cellTab.slice();
+    this.downDirection();
+    tempDown=(JSON.stringify(tempDown)===JSON.stringify(this.state.cellTab));
+
+    let tempRight = this.state.cellTab;
+    this.rightDirection();
+    tempRight=(JSON.stringify(tempRight)===JSON.stringify(this.state.cellTab));
+
+    let tempLeft = this.state.cellTab;
+    this.leftDirection();
+    tempLeft=(JSON.stringify(tempLeft )===JSON.stringify(this.state.cellTab));;
+    console.log((tempUp && tempDown && tempRight && tempLeft));
+    
+    return (tempUp && tempDown && tempRight && tempLeft)
+  }
+
   handleKeyPress = (event) => {
     this.popUpInit();
     document.addEventListener("keydown", event => {
@@ -149,24 +170,30 @@ class Board extends React.Component {
     switch(event.key){
       case "ArrowUp":
         this.upDirection();
-        this.printer(this.state.cellTab);
-        // let matrix = [0,1,2,
-        //               4,5,6,
-        //               8,9,10];
+        //if (this.verifyEnd()==false){
+          this.addSquare();
+       // }
         
         break;
       case "ArrowDown":
         this.downDirection();
-        //this.printer(this.state.cellTab);
-        this.addSquare();
+        //if (this.verifyEnd()==false){
+          this.addSquare();
+       // }
+        
         break;
       case "ArrowLeft":
         this.leftDirection();
-        this.addSquare();
+        //if (this.verifyEnd()==false){
+          this.addSquare();
+        //}
+        
         break;
       case "ArrowRight":
         this.rightDirection();
-        this.addSquare();
+        //if (this.verifyEnd()==false){
+          this.addSquare();
+       // }
         break;  
 
     }}
@@ -209,11 +236,17 @@ class Board extends React.Component {
 addSquare = () => {
 
   // verifier qu'il y a la place ...
+  //if(this.verifyEnd() == true){
+    //console.log("STOP");
+  //}
+  
   let zeros = this.state.cellTab.filter(cell => cell==0);
   if(zeros.length==0){
-    for(let i = 0; i < this.state.cellTab.length; i++){
-      
+    console.log("ENTERED");
+    if(this.verifyEnd()==true){
+      alert("TRY AGAIN NEXT TIME");
     }
+    
     return;
   }
 
