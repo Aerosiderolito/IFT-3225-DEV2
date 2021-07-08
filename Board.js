@@ -3,9 +3,10 @@ class Board extends React.Component {
     
     super(props);
     this.state = {
+      restart:  false,
       dimension: 0,
       score: 0,
-      winCase: 64, // objectif de victoire
+      winCase: 32, // objectif de victoire
       cellTab: [],
       
       caseBgColors : {
@@ -34,11 +35,21 @@ class Board extends React.Component {
   }
 
   popUpInit(){
+      
       this.setState.score =0;
       this.state.cellTab = [];
       this.state.dimension = 0;
+      if (this.state.restart){
+        
+        window.location.reload();
+        return;
+      };
         do{
         this.state.dimension = +window.prompt("Saissisez une dimension pour le tableau");
+        if(this.state.dimension == 0){
+          window.location.reload();
+          return;
+        }
   
       }while(isNaN(this.state.dimension)|| (this.state.dimension < 0) || (this.state.dimension == ""))
 
@@ -169,31 +180,34 @@ class Board extends React.Component {
     this.popUpInit();
     document.addEventListener("keydown", event => {
      console.log(event.key);
+     if(this.state.restart){
+      return;
+    }
     switch(event.key){
+      
       case "ArrowUp":
 
         this.upDirection();
+       this.state.restart =  this.verifyVictory(this.state.cellTab);
         this.addSquare();
-        
 
-        
         break;
       case "ArrowDown":
         this.downDirection();
+        this.state.restart =  this.verifyVictory(this.state.cellTab);
         this.addSquare();
-
+       
         break;
       case "ArrowLeft":
         this.leftDirection();
+        this.state.restart = this.verifyVictory(this.state.cellTab);
         this.addSquare();
-   
-
-        
+       
         break;
       case "ArrowRight":
         this.rightDirection();
+        this.state.restart =  this.verifyVictory(this.state.cellTab);
         this.addSquare();
-
 
         break;  
 
@@ -241,7 +255,7 @@ verifyVictory(tab){
     return false;
   }
   else{
-    alert("Vous avez gagné!");
+    alert("Victoire!!!!");
     return true;
   }
   
@@ -283,7 +297,7 @@ addSquare = () => {
 }
 
 rightDirection() {
-  
+
   let retValue = []
   let line = [];
   // loop sur le tableau
@@ -316,12 +330,10 @@ rightDirection() {
           line = [];
       }
   }
-  this.verifyVictory(this.state.cellTab);
   this.state.cellTab = retValue;
 }
 
 leftDirection(){
-  
   let retValue = [];
   let line=[];
   // loop sur le tableau
@@ -353,7 +365,6 @@ leftDirection(){
       line=[];   
   }
 }
-this.verifyVictory(this.state.cellTab);
   this.state.cellTab = retValue;
 
   
