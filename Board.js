@@ -33,8 +33,9 @@ class Board extends React.Component {
   }
 
   popUpInit(){
-
+      this.setState.score =0;
       this.state.cellTab = [];
+      this.state.dimension = 0;
         do{
         this.state.dimension = +window.prompt("Saissisez une dimension pour le tableau");
   
@@ -244,7 +245,8 @@ addSquare = () => {
   if(zeros.length==0){
     console.log("ENTERED");
     if(this.verifyEnd()==true){
-      alert("TRY AGAIN NEXT TIME");
+      alert("Jeu est terminé sans succès, essayez de nouveau!");
+      window.location.reload();
     }
     
     return;
