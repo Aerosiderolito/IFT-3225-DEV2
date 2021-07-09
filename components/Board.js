@@ -8,7 +8,6 @@ class Board extends React.Component {
       score: 0,
       winCase: 32, // objectif de victoire
       cellTab: [],
-      msg:"New Game",
       
       caseBgColors : {
         deux: "#EEE4DA",
@@ -63,41 +62,14 @@ class Board extends React.Component {
 
       // Remplir de 2
      
-      this.setRandom2(this.state.cellTab);
+      setRandomInit(this.state.cellTab, this.state.dimension);
 
       this.printer(this.state.cellTab);
 
 
   }
 
-  setRandom2(tabu){
-    let randomC = Math.floor(Math.random()*tabu.length);
-     
-    for(let i = 0; i<2; i++){
-      let coin = (Math.random());
 
-      if(coin>0.5){
-        // numero 2
-        if(tabu[randomC]==0){
-          tabu[randomC] = 2;
-        }
-        else{
-          randomC = Math.floor(Math.random()*this.state.dimension);
-          i--;
-        }
-      }
-      else{
-        // numero 4
-        if(tabu[randomC]==0){
-          tabu[randomC] = 4;
-        }
-        else{
-          randomC = Math.floor(Math.random()*this.state.dimension);
-          i--;
-        }
-      }              
-    }
-  }
 
   setScore(){
     this.state.score++;
@@ -197,25 +169,25 @@ class Board extends React.Component {
       
       case "ArrowUp":
         this.upDirection();
-        this.state.restart =  this.verifyVictory(this.state.cellTab);
+        this.state.restart =  verifyVictory(this.state.cellTab, this.state.winCase);
         this.addSquare();
 
         break;
       case "ArrowDown":
         this.downDirection();
-        this.state.restart =  this.verifyVictory(this.state.cellTab);
+        this.state.restart =  verifyVictory(this.state.cellTab , this.state.winCase);
         this.addSquare();
        
         break;
       case "ArrowLeft":
         this.leftDirection();
-        this.state.restart = this.verifyVictory(this.state.cellTab);
+        this.state.restart = verifyVictory(this.state.cellTab , this.state.winCase);
         this.addSquare();
        
         break;
       case "ArrowRight":
         this.rightDirection();
-        this.state.restart =  this.verifyVictory(this.state.cellTab);
+        this.state.restart =  verifyVictory(this.state.cellTab , this.state.winCase);
         this.addSquare();
 
         break;  
@@ -257,22 +229,6 @@ class Board extends React.Component {
 
   }
 
-verifyVictory(tab){
-
-  let retVal = tab.filter(cell => cell==this.state.winCase);
-  if(retVal.length == 0){
-    return false;
-  }
-  else{
-    //alert("Victoire!!!!");
-    ReactDOM.render(<h1>Victoire</h1>,document.getElementById("invisible"));
-
-    this.state.msg="Clean Board";
-    document.getElementsByTagName("button")[0].innerHTML=this.state.msg;
-    return true;
-  }
-  
-}
 
 addSquare = () => {
 
@@ -288,8 +244,8 @@ addSquare = () => {
         
         ReactDOM.render(<h1>Game over, better luck next time!</h1>,document.getElementById("invisible"));
         //this.state.score=this.state.score-1;
-        this.state.msg="Clean Board";
-        document.getElementsByTagName("button")[0].innerHTML=this.state.msg;
+       
+        document.getElementsByTagName("button")[0].innerHTML="Clear Board";
         this.state.restart=true;
         //this.popUpInit()
 
@@ -448,7 +404,7 @@ downDirection(){
                 <p>Join the tiles, get to 2048! 🔥</p>
               </section>
               <aside>
-              <button onClick={this.handleKeyPress} > {this.state.msg}</button>
+              <button onClick={this.handleKeyPress} > New Game!</button>
 
               </aside>
             </div>
