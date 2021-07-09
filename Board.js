@@ -178,7 +178,13 @@ class Board extends React.Component {
     return (tempUp && tempDown && tempRight && tempLeft)
   }
 
+
   handleKeyPress = (event) => {
+    window.addEventListener("keydown", function(e) {
+      if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+          e.preventDefault();
+      }
+  }, false);
     this.popUpInit();
     document.addEventListener("keydown", event => {
      console.log(event.key);
