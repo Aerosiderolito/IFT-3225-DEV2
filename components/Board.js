@@ -5,7 +5,6 @@ class Board extends React.Component {
     this.state = {
       restart: false,
       dimension: 0,
-      score: 0,
       winCase: 32, // objectif de victoire
       cellTab: [], 
     };
@@ -13,7 +12,7 @@ class Board extends React.Component {
 
   popUpInit(){
       
-      this.setState.score =0;
+      this.props.game.setScore(0);
       this.state.cellTab = [];
       this.state.dimension = 0;
     
@@ -42,16 +41,6 @@ class Board extends React.Component {
       setRandomInit(this.state.cellTab, this.state.dimension);
 
       printer(this.state.cellTab, this.state.dimension);
-
-
-  }
-
-
-
-  setScore(){
-    this.state.score++;
-    //console.log(num+" "+this.state.score);
-    ReactDOM.render(<div> {this.state.score}</div>,document.getElementById("score") );
   }
   
   verifyEnd(){
@@ -88,7 +77,7 @@ class Board extends React.Component {
      if(this.state.restart){
       return;
     }else{
-      this.setScore();
+      this.props.game.setScore();
     }
     switch(event.key){
       
@@ -121,60 +110,17 @@ class Board extends React.Component {
     )
   }
 
-  transposeMatrix = (matrix, dimension) =>{
- 
-    let line = [];
-    let retValue = [];
-    let transp = []
-    // obtenir les lignes
-    for(let i = 0 ; i<matrix.length ; i++){
-      line.push(matrix[i]);
-      if((i+1)%dimension==0 ){
-        
-        transp.push(line);
-        line = [];
-      }
-    }
-
-
-    transp = transp[0].map((_, colIndex) => transp.map(row => row[colIndex]));
-
-    for(let i = 0; i<dimension ; i++){
-      for(let j = 0; j <dimension; j++){
-        this.state.cellTab[i]=retValue.push(transp[i][j]);
-      }
-      
-    }
-    
-    
-   for(var t = 0; t<this.state.cellTab.length-1;t++)
-    {
-      this.state.cellTab[t]=retValue[t];
-    }
-
-  }
-
-
 addSquare = () => {
 
   let zeros = this.state.cellTab.filter(cell => cell==0);
   if(zeros.length==0){
-    console.log("ENTERED");
-    if(this.verifyEnd()==true){
-      //alert("Game over, better luck next time!");
-      //window.location.reload();
 
-      
-        //alert("Victoire!!!!");
-        
+    if(this.verifyEnd()==true){
+
         ReactDOM.render(<h1>Game over, better luck next time!</h1>,document.getElementById("invisible"));
-        //this.state.score=this.state.score-1;
-       
+
         document.getElementsByTagName("button")[0].innerHTML="Clear Board";
         this.state.restart=true;
-        //this.popUpInit()
-
-      
     }
     
     return;
@@ -276,17 +222,17 @@ leftDirection(){
 
 upDirection(){
   
-  this.transposeMatrix(this.state.cellTab, this.state.dimension);
+  transposeMatrix(this.state.cellTab, this.state.dimension);
   this.leftDirection();
-  this.transposeMatrix(this.state.cellTab, this.state.dimension);
+  transposeMatrix(this.state.cellTab, this.state.dimension);
 
 
 }
 
 downDirection(){
-    this.transposeMatrix(this.state.cellTab, this.state.dimension);
+    transposeMatrix(this.state.cellTab, this.state.dimension);
     this.rightDirection();
-    this.transposeMatrix(this.state.cellTab, this.state.dimension);
+    transposeMatrix(this.state.cellTab, this.state.dimension);
 
   }
 
@@ -295,35 +241,6 @@ downDirection(){
     return (
       <div className={"Board"} >
           
-            <div className={"flex_principal"}>
-            
-            <section>
-              <h1>2048</h1>
-            
-              
-            </section>
-
-            <aside>
-              
-              <div className={"flex_display"}>
-
-                <section>
-                  <div >SCORE</div>
-                  <div id="score">0</div>
-                </section>
-
-                <aside>
-                  <div>BEST</div>
-                  <div>0</div>
-                  
-                </aside>
-                
-              </div>
-            </aside>
-            
-            
-
-            </div>
             <div className={"flex_display_secondaire"}>
               <section>
                 <p>Join the tiles, get to 2048! 🔥</p>

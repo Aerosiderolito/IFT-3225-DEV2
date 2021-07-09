@@ -95,3 +95,12 @@ function printer(tabu, dimension){
        <tbody>{displayTab}</tbody></table>,document.getElementById("tableau") );
  
   }
+
+  function setScore(score, value){
+    if(value != null){
+      score = value;
+      return;
+    }
+    score++;
+    ReactDOM.render(<div> {score}</div>,document.getElementById("score") );
+  }

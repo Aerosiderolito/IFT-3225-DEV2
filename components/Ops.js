@@ -32,3 +32,41 @@ setRandomInit = (tabu,dimension)=>{
       }              
     }
   }
+
+/**
+ * fonction permetant de transposer le tableau 
+ * @param matrix: tableau a transposer
+ * @param dimension: dimension du tableau
+ * 
+ ***/
+
+transposeMatrix = (matrix, dimension) =>{
+ 
+    let line = [];
+    let retValue = [];
+    let transp = []
+    // obtenir les lignes
+    for(let i = 0 ; i<matrix.length ; i++){
+      line.push(matrix[i]);
+      if((i+1)%dimension==0 ){
+        
+        transp.push(line);
+        line = [];
+      }
+    }
+
+
+    transp = transp[0].map((_, colIndex) => transp.map(row => row[colIndex]));
+
+    for(let i = 0; i<dimension ; i++){
+      for(let j = 0; j <dimension; j++)
+        matrix[i]=retValue.push(transp[i][j]);
+      
+    }
+    
+    
+   for(var t = 0; t<matrix.length-1;t++)
+      matrix[t]=retValue[t];
+
+  }
+
