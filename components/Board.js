@@ -7,30 +7,7 @@ class Board extends React.Component {
       dimension: 0,
       score: 0,
       winCase: 32, // objectif de victoire
-      cellTab: [],
-      
-      caseBgColors : {
-        deux: "#EEE4DA",
-        quatre: "#EEE1C9",
-        huit: "#F3B27A",
-        seize: "#F69664" ,
-        treinteDeux: "#F77C5F",
-        soixanteQuatre: "#F75F3B",
-        cVingHuit:"#EDD073",
-      },
-    
-      caseTxtColors : {
-        deux:"#776E65",
-        quatre: "#776E65",
-        huit: "#F9F6F2",
-        seize: "#F9F6F2",
-        treinteDeux: "#F9F6F2",
-        soixanteQuatre: "#F9F6F2",
-        cVingHuit:"#F9F6F2",
-    
-    
-      }
-     
+      cellTab: [], 
     };
   }
 
@@ -64,7 +41,7 @@ class Board extends React.Component {
      
       setRandomInit(this.state.cellTab, this.state.dimension);
 
-      this.printer(this.state.cellTab);
+      printer(this.state.cellTab, this.state.dimension);
 
 
   }
@@ -77,58 +54,6 @@ class Board extends React.Component {
     ReactDOM.render(<div> {this.state.score}</div>,document.getElementById("score") );
   }
   
-  printer(tabu){
-    
-    let displayTab = [];  
-    let line = [];
-
-    for(let i=0; i<=tabu.length; i++){
-
-      switch(tabu[i]){
-
-        case 0:
-          line.push(<td className={"zero"}>&nbsp;</td>);
-          break;
-        case 2:
-          line.push(<td style={{color:this.state.caseTxtColors.deux, backgroundColor: this.state.caseBgColors.deux} } >{tabu[i]}</td>);
-          break;
-        case 4:
-          line.push(<td style={{color:this.state.caseTxtColors.quatre, backgroundColor:this.state.caseBgColors.quatre}}>{tabu[i]}</td>);
-          break;
-        case 8:
-          line.push(<td style={{color:this.state.caseTxtColors.huit, backgroundColor:this.state.caseBgColors.huit} }>{tabu[i]}</td>);
-          break;
-        case 16:
-          line.push(<td style={{color:this.state.caseTxtColors.seize, backgroundColor:this.state.caseBgColors.seize}}>{tabu[i]}</td>);
-          break;
-     
-        case 32:
-          line.push(<td style={{color:this.state.caseTxtColors.treinteDeux, backgroundColor:this.state.caseBgColors.treinteDeux} }>{tabu[i]}</td>);
-          break;
-        case 64:
-          line.push(<td style={{color:this.state.caseTxtColors.soixanteQuatre, backgroundColor:this.state.caseBgColors.soixanteQuatre}}>{tabu[i]}</td>);
-          break;
-        case 128:
-          line.push(<td style={{color:this.state.caseTxtColors.cVingHuit, backgroundColor:this.state.caseBgColors.cVingHuit}}>{tabu[i]}</td>);
-          break;
-        default:
-          line.push(<td>{tabu[i]}</td>);
-          break;
-
-      }
-    
-      
-      if(((i+1)%this.state.dimension==0) && i !=0){
-        displayTab.push(<tr className="row">{line}</tr>);
-        line = [];
-      }
-    }
- 
-     ReactDOM.render(<table><thead></thead>
-       <tbody>{displayTab}</tbody></table>,document.getElementById("tableau") );
- 
-  }
-
   verifyEnd(){
     let tempUp = this.state.cellTab.slice();
     this.upDirection();
@@ -274,7 +199,7 @@ addSquare = () => {
         this.state.cellTab[randomCase]=4; 
       }
 
-  this.printer(this.state.cellTab);
+  printer(this.state.cellTab, this.state.dimension);
 }
 
 rightDirection() {

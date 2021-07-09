@@ -5,7 +5,8 @@ class Game extends React.Component {
       this.state = {
         
         Game: {
-          dimension:0
+          dimension:0, 
+          
           },
        
       };
