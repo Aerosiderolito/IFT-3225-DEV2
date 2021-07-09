@@ -6,7 +6,7 @@ class Board extends React.Component {
       restart: false,
       dimension: 0,
       score: 0,
-      winCase: 8, // objectif de victoire
+      winCase: 32, // objectif de victoire
       cellTab: [],
       msg:"New Game",
       
@@ -266,6 +266,7 @@ verifyVictory(tab){
   else{
     //alert("Victoire!!!!");
     ReactDOM.render(<h1>Victoire</h1>,document.getElementById("invisible"));
+
     this.state.msg="Clean Board";
     document.getElementsByTagName("button")[0].innerHTML=this.state.msg;
     return true;
@@ -279,8 +280,20 @@ addSquare = () => {
   if(zeros.length==0){
     console.log("ENTERED");
     if(this.verifyEnd()==true){
-      alert("Game over, better luck next time!");
-      window.location.reload();
+      //alert("Game over, better luck next time!");
+      //window.location.reload();
+
+      
+        //alert("Victoire!!!!");
+        
+        ReactDOM.render(<h1>Game over, better luck next time!</h1>,document.getElementById("invisible"));
+        //this.state.score=this.state.score-1;
+        this.state.msg="Clean Board";
+        document.getElementsByTagName("button")[0].innerHTML=this.state.msg;
+        this.state.restart=true;
+        //this.popUpInit()
+
+      
     }
     
     return;
