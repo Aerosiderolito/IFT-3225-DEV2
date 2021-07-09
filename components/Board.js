@@ -17,7 +17,6 @@ class Board extends React.Component {
       this.state.dimension = 0;
     
       if (this.state.restart){
-        
         window.location.reload();
         return;
       };

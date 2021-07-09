@@ -33,7 +33,10 @@ const caseBgColors = {
     soixanteQuatre: "#F75F3B",
     cVingHuit:"#EDD073",
   }
-
+/**
+ * Enumeration de couleurs (text)
+ *
+ * */
 const caseTxtColors = {
     deux:"#776E65",
     quatre: "#776E65",
