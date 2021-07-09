@@ -114,7 +114,10 @@ div p{
 }
 
 
-
+#invisible{
+    text-align:center;
+    font-size: x-large;
+}
 
 
 table{

@@ -3,11 +3,12 @@ class Board extends React.Component {
     
     super(props);
     this.state = {
-      restart:  false,
+      restart: false,
       dimension: 0,
       score: 0,
-      winCase: 32, // objectif de victoire
+      winCase: 8, // objectif de victoire
       cellTab: [],
+      msg:"New Game",
       
       caseBgColors : {
         deux: "#EEE4DA",
@@ -39,13 +40,14 @@ class Board extends React.Component {
       this.setState.score =0;
       this.state.cellTab = [];
       this.state.dimension = 0;
+    
       if (this.state.restart){
         
         window.location.reload();
         return;
       };
         do{
-        this.state.dimension = +window.prompt("Saissisez une dimension pour le tableau");
+        this.state.dimension = +window.prompt("Enter dimension for the board");
         if(this.state.dimension == 0){
           window.location.reload();
           return;
@@ -97,8 +99,8 @@ class Board extends React.Component {
     }
   }
 
-  setScore(num){
-    this.state.score = +this.state.score+num;
+  setScore(){
+    this.state.score++;
     //console.log(num+" "+this.state.score);
     ReactDOM.render(<div> {this.state.score}</div>,document.getElementById("score") );
   }
@@ -182,13 +184,14 @@ class Board extends React.Component {
      console.log(event.key);
      if(this.state.restart){
       return;
+    }else{
+      this.setScore();
     }
     switch(event.key){
       
       case "ArrowUp":
-
         this.upDirection();
-       this.state.restart =  this.verifyVictory(this.state.cellTab);
+        this.state.restart =  this.verifyVictory(this.state.cellTab);
         this.addSquare();
 
         break;
@@ -255,7 +258,10 @@ verifyVictory(tab){
     return false;
   }
   else{
-    alert("Victoire!!!!");
+    //alert("Victoire!!!!");
+    ReactDOM.render(<h1>Victoire</h1>,document.getElementById("invisible"));
+    this.state.msg="Clean Board";
+    document.getElementsByTagName("button")[0].innerHTML=this.state.msg;
     return true;
   }
   
@@ -267,7 +273,7 @@ addSquare = () => {
   if(zeros.length==0){
     console.log("ENTERED");
     if(this.verifyEnd()==true){
-      alert("Jeu est terminé sans succès, essayez de nouveau!");
+      alert("Game over, better luck next time!");
       window.location.reload();
     }
     
@@ -311,7 +317,6 @@ rightDirection() {
    
               if (line[j] > 0 && j != this.state.dimension-1) {
                   if (line[j] == line[j + 1] && j < line.length-1 )  {
-                      this.setScore(line[j]);
                       line[j + 1] = line[j] + line[j];
                       line[j] = 0;
                       break;
@@ -326,7 +331,7 @@ rightDirection() {
               }
           }
    
-          retValue = retValue.concat(line); //
+          retValue = retValue.concat(line);
           line = [];
       }
   }
@@ -337,7 +342,7 @@ leftDirection(){
   let retValue = [];
   let line=[];
   // loop sur le tableau
-  for(let i=0; i<this.state.cellTab.length; i++){    
+  for(let i=0; i<this.state.cellTab.length; i++){
 
     line.push(this.state.cellTab[i]);
 
@@ -352,7 +357,6 @@ leftDirection(){
               line[j]= 0;              
             }
             if(j > 0 && line[j]==line[j-1]){
-              this.setScore(line[j]);
               line[j-1]=line[j]+line[j];
               line[j]=0;
               
@@ -422,14 +426,16 @@ downDirection(){
             </div>
             <div className={"flex_display_secondaire"}>
               <section>
-                <p>Voici notre tp pour le cours 3225 🔥</p>
+                <p>Join the tiles, get to 2048! 🔥</p>
               </section>
               <aside>
-              <button onClick={this.handleKeyPress} > New Game</button>
+              <button onClick={this.handleKeyPress} > {this.state.msg}</button>
 
               </aside>
             </div>
-            
+            <div id={"invisible"}>
+
+            </div>
           <div id={"tableau"}>
 
           </div>
