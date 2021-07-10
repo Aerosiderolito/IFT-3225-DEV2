@@ -46,6 +46,12 @@ const caseTxtColors = {
     cVingHuit:"#F9F6F2",
 }
 
+/**
+ * fonction permettant l'affichage du tableau dans le DOM
+ * @param tabu : grille a faire l'affichage 
+ * @param dimension : dimension respective du tableau
+ */
+
 function printer(tabu, dimension){
     
     let displayTab = [];  
@@ -97,6 +103,11 @@ function printer(tabu, dimension){
        <tbody>{displayTab}</tbody></table>,document.getElementById("tableau") );
  
   }
+  /**
+   * fonction permettant d'affecter le score du jeu
+   * @param score, score du jeu 
+   * @param {*} value, valuer optionnel pour fixer le pointage du jeu
+   */
 
   function setScore(score, value){
     if(value != null){

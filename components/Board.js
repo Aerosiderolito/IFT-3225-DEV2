@@ -1,3 +1,6 @@
+/**
+ * Component du tableau avec ses mouvements
+ */
 class Board extends React.Component {
   constructor(props) {
     
@@ -9,7 +12,9 @@ class Board extends React.Component {
       cellTab: [], 
     };
   }
-
+/**
+ * fonction popUp qui initialise le tableau
+ */
   popUpInit(){
       
       this.props.game.setScore(0);
@@ -41,6 +46,11 @@ class Board extends React.Component {
 
       printer(this.state.cellTab, this.state.dimension);
   }
+
+
+  /**
+   * function qui verifie si le jeu a échoué
+   */
   
   verifyEnd(){
     let tempUp = this.state.cellTab.slice();
@@ -62,7 +72,10 @@ class Board extends React.Component {
     
     return (tempUp && tempDown && tempRight && tempLeft)
   }
-
+/**
+ * fonction qui permet a l'utilisateur de manipuler le tableau
+ * @param {} event, evenement à surveiller
+ */
 
   handleKeyPress = (event) => {
     window.addEventListener("keydown", function(e) {
@@ -108,7 +121,9 @@ class Board extends React.Component {
     }}
     )
   }
-
+/**
+ * fonction qui permet j'ajouter un carreau aléatoire
+ */
 addSquare = () => {
 
   let zeros = this.state.cellTab.filter(cell => cell==0);
@@ -146,6 +161,9 @@ addSquare = () => {
 
   printer(this.state.cellTab, this.state.dimension);
 }
+/**
+ * fonction du mouvement à droit
+ */
 
 rightDirection() {
 
@@ -182,6 +200,9 @@ rightDirection() {
   }
   this.state.cellTab = retValue;
 }
+/**
+ * fonction du mouvement à gauche
+ */
 
 leftDirection(){
   let retValue = [];
@@ -218,6 +239,9 @@ leftDirection(){
 
   
 }
+/**
+ * fonction du mouvement vers le haut
+ */
 
 upDirection(){
   
@@ -227,7 +251,9 @@ upDirection(){
 
 
 }
-
+/**
+ * fonction du mouvement vers le bas
+ */
 downDirection(){
     transposeMatrix(this.state.cellTab, this.state.dimension);
     this.rightDirection();
