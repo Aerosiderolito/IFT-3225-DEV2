@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>Rapport TP2</title>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link  href="../css/rapport.css" rel="stylesheet"/>
-</head>
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
-    <nav class="bg-secondary">
-     <!-- Navbar content -->
+    <head>
+        <title>Rapport TP2</title>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+        <link  href="../css/rapport.css" rel="stylesheet"/>
+    </head>
+    <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+        <nav class="bg-secondary">
+            <!-- Navbar content -->
             <ul>
                 <li><a href="#dev">Développement</a></li>
                 <li><a href="#dif">Difficultés</a></li>
@@ -18,178 +19,178 @@
                 <li><a href="#solutions">2048</a></li>
                 <li><a href="">Code source</a></li>
             </ul>
-    </nav>
-
-<!-- Outils -->
-<div id="dev" class="container text-center">
-    <h2>Développement</h2>
-    <p class="text-center"><em>Comment ce projet a été fait?</em></p>
-    <p >Pour faire ce projet nous avons utilisé tous les outils disponibles pour rendre ce travail le plus semblable du vrai site
-        <a href="https://https://play2048.co/" target="_blank" >play2048.co</a>. Nous avons employé Visual Studio Code comme outil de développement
-        dans le but de rendre ce tp le plus proche de notions appris dans les séance de cours et de démonstrations. Pour partager le projet nous avons établi
-        un repertoire sur GitHub. On a déployé également des versions <i>standalone</i> des libreries «reactjs» et «babel» pour permettre un deployment effectif sur 
-        le seveur du diro.
-    </p>
-    <br/>
-    <div class="row">
-        <div class="col-sm-4">
-            <p class="text-center"><strong>GitHub</strong></p><br/>
-            <figure>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" class="img-circle person" alt="Random Name" width="255" height="255"/>
-                <figcaption>Image souce 
-                    <a href="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" target="_blank">
-                         Wikipedia</a></figcaption>
-            </figure>
-           
-        </div>
-        <div class="col-sm-4">
-            <p class="text-center"><strong>React JS</strong></p><br/>
-            <figure>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React.JS" width="255" height="255"/>
-                <figcaption>Image source - 
-                    <a href="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" target="_blank"> Wikipedia</a>
-                </figcaption>
-            </figure>
-           
-        </div>
-        <div class="col-sm-4">
-            <p class="text-center"><strong>Visual Studio Code </strong></p><br/>
-            <figure>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" alt="VS Code" width="255" height="255"/>
-                <figcaption> Image souce 
-                    <a href="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" target="_blank">
-                         Wikipedia</a>
-                </figcaption>
-            </figure>
-         
-        </div>
-    </div>
-</div>
-
-<!-- section de difficultés -->
-<div id="dif" class="bg-1">
-    <div class="container">
-        <h2 class="text-center">Difficultés</h2>
-        <p >
-            Nous avons grandement apprécié ce TP, pourtant on a eu beaucoup de limitations pour faire le développement. Par exemple du deploiment,
-            nous avons l'habitude d'utiliser de tiers services pour faire la publication des applications React (GitHub vers un autre service). Puisque les serveurs du DIRO ne sont pas de
-            notre propriété, il est très difficile de changer le DNS vers un tier service comme <em> Netlify, AWS, Azure ou Heroku</em>. Même si on aurait réussi
-            à deployer ce cette manière il aurait fallu utiliser un certificât de securité qui permet la connexion <code>https</code>. Tout cela sort du cadre du cours et nous aurions rien
-            appris si on avait utilisé la manière standard du déploiment.
-            
-        </p>
-    
-
-        <div class="row text-center">
-            <h2>D'autres difficultés</h2>
+        </nav>
+        
+        <!-- Outils -->
+        <div id="dev" class="container text-center">
+            <h2>Développement</h2>
+            <p class="text-center"><em>Comment ce projet a été fait?</em></p>
+            <p >Pour faire ce projet nous avons utilisé tous les outils disponibles pour rendre ce travail le plus semblable du vrai site
+                <a href="https://https://play2048.co/" target="_blank" >play2048.co</a>. Nous avons employé Visual Studio Code comme outil de développement
+                dans le but de rendre ce tp le plus proche de notions appris dans les séance de cours et de démonstrations. Pour partager le projet nous avons établi
+                un repertoire sur GitHub. On a déployé également des versions <i>standalone</i> des libreries «reactjs» et «babel» pour permettre un deployment effectif sur 
+                le seveur du diro.
+            </p>
             <br/>
-            
-            <div class="col-sm-4">
-                <div>
-                    <h5>Algorithm de mouvement</h5>
-                    <ul>
-                        <li>🃏 On a implementé un algorithme de manière naïve qui comporte de petits bugs.
-                            Le <em>«Refactoring»</em> du code est possible pourant on manque de temps pour corriger les petits bugs.</li>
-                        <li>◻️Dimension nxn: la plupart de ressources en ligne se limitent à une dimension 4.</li>
-                    </ul>
-                   
+            <div class="row">
+                <div class="col-sm-4">
+                    <p class="text-center"><strong>GitHub</strong></p><br/>
+                    <figure>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" class="img-circle person" alt="Random Name" width="255" height="255"/>
+                        <figcaption>Image souce 
+                            <a href="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" target="_blank">
+                                Wikipedia</a></figcaption>
+                    </figure>
+                    
                 </div>
-            </div>
-            <div class="col-sm-4">
-                <div>
-                    <h5>Découpage du code</h5>
-                    <ul>
-                        <li>❌ Difficile sans le hooks. </li>
-                        <li>🚩 JavaScript est <em>« event-driven / functional ». </em></li>
-                        <li>⚛️ React n'est pas pensé <em>« OOP ». </em></li>
-                        <li>🧩 Pas de Node.js pour utiliser des lectures et écriture de fichiers.</li>
-                    </ul>
-                   
+                <div class="col-sm-4">
+                    <p class="text-center"><strong>React JS</strong></p><br/>
+                    <figure>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React.JS" width="255" height="255"/>
+                        <figcaption>Image source - 
+                            <a href="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" target="_blank"> Wikipedia</a>
+                        </figcaption>
+                    </figure>
+                    
+                </div>
+                <div class="col-sm-4">
+                    <p class="text-center"><strong>Visual Studio Code </strong></p><br/>
+                    <figure>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" alt="VS Code" width="255" height="255"/>
+                        <figcaption> Image souce 
+                            <a href="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" target="_blank">
+                                Wikipedia</a>
+                        </figcaption>
+                    </figure>
                     
                 </div>
             </div>
-            <div class="col-sm-4">
-                <div>
-                    <h5>Pas de libraires auxilaires</h5>
-                    <ul>
-                        <li>On utilise simplement les notions de cours donc on a evité l'utilisation de ressources externes comme des fonctions
-                            mathematiques qui aurait pu simplifier la tâche pour les daplacement de cases. 
-                        </li>
+        </div>
+        
+        <!-- section de difficultés -->
+        <div id="dif" class="bg-1">
+            <div class="container">
+                <h2 class="text-center">Difficultés</h2>
+                <p >
+                    Nous avons grandement apprécié ce TP, pourtant on a eu beaucoup de limitations pour faire le développement. Par exemple du deploiment,
+                    nous avons l'habitude d'utiliser de tiers services pour faire la publication des applications React (GitHub vers un autre service). Puisque les serveurs du DIRO ne sont pas de
+                    notre propriété, il est très difficile de changer le DNS vers un tier service comme <em> Netlify, AWS, Azure ou Heroku</em>. Même si on aurait réussi
+                    à deployer ce cette manière il aurait fallu utiliser un certificât de securité qui permet la connexion <code>https</code>. Tout cela sort du cadre du cours et nous aurions rien
+                    appris si on avait utilisé la manière standard du déploiment.
+                    
+                </p>
+                
+                
+                <div class="row text-center">
+                    <h2>D'autres difficultés</h2>
+                    <br/>
+                    
+                    <div class="col-sm-4">
+                        <div>
+                            <h5>Algorithm de mouvement</h5>
+                            <ul>
+                                <li>🃏 On a implementé un algorithme de manière naïve qui comporte de petits bugs.
+                                    Le <em>«Refactoring»</em> du code est possible pourant on manque de temps pour corriger les petits bugs.</li>
+                                <li>◻️Dimension nxn: la plupart de ressources en ligne se limitent à une dimension 4.</li>
+                            </ul>
+                            
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div>
+                            <h5>Découpage du code</h5>
+                            <ul>
+                                <li>❌ Difficile sans le hooks. </li>
+                                <li>🚩 JavaScript est <em>« event-driven / functional ». </em></li>
+                                <li>⚛️ React n'est pas pensé <em>« OOP ». </em></li>
+                                <li>🧩 Pas de Node.js pour utiliser des lectures et écriture de fichiers.</li>
+                            </ul>
+                            
+                            
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div>
+                            <h5>Pas de libraires auxilaires</h5>
+                            <ul>
+                                <li>On utilise simplement les notions de cours donc on a evité l'utilisation de ressources externes comme des fonctions
+                                    mathematiques qui aurait pu simplifier la tâche pour les daplacement de cases. 
+                                </li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h2>On a beaucoup aimé les difficultés</h2>
+                    <p>
+                        Malgré les difficultés nous avons trouvé la façon de contourner les problèmes, nous avons remis en question notre manière de faire du code et
+                        cela nous a permis de nous améliorer en tant que programmeurs, cela sera expliqué en détail dans la section suivante. 
                         
-                    </ul>
-                   
+                    </p>
+                </div>
+            </div>
+            
+            
+            
+        </div>
+        
+        <!-- Container (Contact Section) -->
+        <div id="app" class="container">
+            <h2 class="text-center">Apprentissage</h2>
+            
+            <div class="row">
+                
+                <p >
+                    Hormis les difficultés, ce travail pratique a 
+                    permis l'acquisition de certaines apprentissage.
+                    Préalablement a ce Tp, j'avais nulle connaissance sur React. 
+                    L'introduction dans le cours ainsi que les recherches effectuées
+                    sur le web m'ont permis de comprendre les fonctionnalités
+                    importantes de react tel que les components,
+                    propos et les staent. Ma maitrise de React reste toujours
+                    limitée mais ce travail pratique à réveiller ma curiosité et ma donnée
+                    l'envie de pratiquer et de perfectionner mais habilite de ce langage.De plus, 
+                    ce travail m’a permis d'actualiser mes connaissances de Javascript et Css. 
+                    Ce travail m'a permis également de profiter pleinement des services disponible
+                    dans nos comptes DIRO, comme le déploiement. La découverte de la possibilité
+                    de déploiement du projet dans l'environnement du DIRO sera d'une grande utilité pour mes futurs projets.
+                </p>
+                
+                <div class="col-md-8">
+                    <div class="row">
+                        
+                    </div>
+                </div>
+                <br/>
+                
+                <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active">
+                        <h2>Mike Ross, Manager</h2>
+                        <p>Man, we've been on the road for some time now. Looking forward to lorem ipsum.</p>
+                    </div>
+                    <div id="menu1" class="tab-pane fade">
+                        <h2>Chandler Bing, Guitarist</h2>
+                        <p>Always a pleasure people! Hope you enjoyed it as much as I did. Could I BE.. any more pleased?</p>
+                    </div>
+                    <div id="menu2" class="tab-pane fade">
+                        <h2>Peter Griffin, Bass player</h2>
+                        <p>I mean, sometimes I enjoy the show, but other times I enjoy other things.</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="text-center">
-            <h2>On a beaucoup aimé les difficultés</h2>
-            <p>
-                Malgré les difficultés nous avons trouvé la façon de contourner les problèmes, nous avons remis en question notre manière de faire du code et
-                cela nous a permis de nous améliorer en tant que programmeurs, cela sera expliqué en détail dans la section suivante. 
-
-            </p>
-        </div>
-    </div>
-    
-
-
-</div>
-
-<!-- Container (Contact Section) -->
-<div id="app" class="container">
-    <h2 class="text-center">Apprentissage</h2>
-
-    <div class="row">
         
-            <p >
-                Hormis les difficultés, ce travail pratique a 
-                permis l'acquisition de certaines apprentissage.
-                Préalablement a ce Tp, j'avais nulle connaissance sur React. 
-                L'introduction dans le cours ainsi que les recherches effectuées
-                sur le web m'ont permis de comprendre les fonctionnalités
-                importantes de react tel que les components,
-                propos et les staent. Ma maitrise de React reste toujours
-                limitée mais ce travail pratique à réveiller ma curiosité et ma donnée
-                l'envie de pratiquer et de perfectionner mais habilite de ce langage.De plus, 
-                ce travail m’a permis d'actualiser mes connaissances de Javascript et Css. 
-                Ce travail m'a permis également de profiter pleinement des services disponible
-                dans nos comptes DIRO, comme le déploiement. La découverte de la possibilité
-                de déploiement du projet dans l'environnement du DIRO sera d'une grande utilité pour mes futurs projets.
-            </p>
         
-        <div class="col-md-8">
-            <div class="row">
-               
-        </div>
-    </div>
-    <br/>
-    
-    <div class="tab-content">
-        <div id="home" class="tab-pane fade in active">
-            <h2>Mike Ross, Manager</h2>
-            <p>Man, we've been on the road for some time now. Looking forward to lorem ipsum.</p>
-        </div>
-        <div id="menu1" class="tab-pane fade">
-            <h2>Chandler Bing, Guitarist</h2>
-            <p>Always a pleasure people! Hope you enjoyed it as much as I did. Could I BE.. any more pleased?</p>
-        </div>
-        <div id="menu2" class="tab-pane fade">
-            <h2>Peter Griffin, Bass player</h2>
-            <p>I mean, sometimes I enjoy the show, but other times I enjoy other things.</p>
-        </div>
-    </div>
-</div>
-</div>
-
-
-<!-- Footer -->
-<footer class="text-center">
-    <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
-        <span class="glyphicon glyphicon-chevron-up"></span>
-    </a><br/><br/>
-    <p>Travail fait par <a href="https://www.w3schools.com" data-toggle="tooltip" title="Visit w3schools">César Rodríguez</a> et Mohammad Naim</p>
-</footer>
-
-
-</body>
+        <!-- Footer -->
+        <footer class="text-center">
+            <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+                <span class="glyphicon glyphicon-chevron-up"></span>
+            </a><br/><br/>
+            <p>Travail fait par <a href="https://www.w3schools.com" data-toggle="tooltip" title="Visit w3schools">César Rodríguez</a> et Mohammad Naim</p>
+        </footer>
+        
+        
+    </body>
 </html>
