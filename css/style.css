@@ -94,7 +94,7 @@ button{
     
     justify-content: center;
 
-}
+} 
 
 
 section h1{
@@ -153,5 +153,5 @@ footer{
     border-top : 1px solid #BBADA0;
     padding-top: 2em;
     
-    text-align: center;
+    text-align: center!important;
 }
