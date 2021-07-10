@@ -21,9 +21,9 @@
 
 <!-- Outils -->
 <div id="dev" class="container text-center">
-    <h3>Développement</h3>
-    <p><em>Comment ce projet a été fait?</em></p>
-    <p>Pour faire ce projet nous avons utilisé tous les outils disponibles pour rendre ce travail le plus semblable du vrai site
+    <h2>Développement</h2>
+    <p class="text-center"><em>Comment ce projet a été fait?</em></p>
+    <p >Pour faire ce projet nous avons utilisé tous les outils disponibles pour rendre ce travail le plus semblable du vrai site
         <a href="https://https://play2048.co/" target="_blank" >play2048.co</a>. Nous avons employé Visual Studio Code comme outil de développement
         dans le but de rendre ce tp le plus proche de notions appris dans les séance de cours et de démonstrations. Pour partager le projet nous avons établi
         un repertoire sur GitHub. On a déployé également des versions <i>standalone</i> des libreries «reactjs» et «babel» pour permettre un deployment effectif sur 
@@ -68,37 +68,68 @@
 <!-- section de difficultés -->
 <div id="dif" class="bg-1">
     <div class="container">
-        <h3 class="text-center">Difficultés</h3>
-        <p >Faire ce déploiment sur les serveurs du DIRO comporte de grandes limitations, l'em</p>
-       
+        <h2 class="text-center">Difficultés</h2>
+        <p >
+            Nous avons grandement apprécié ce TP, pourtant on a eu beaucoup de limitations pour faire le développement. Par exemple du deploiment,
+            nous avons l'habitude d'utiliser de tiers services pour faire la publication des applications React (GitHub vers un autre service). Puisque les serveurs du DIRO ne sont pas de
+            notre propriété, il est très difficile de changer le DNS vers un tier service comme <em> Netlify, AWS, Azure ou Heroku</em>. Même si on aurait réussi
+            à deployer ce cette manière il aurait fallu utiliser un certificât de securité qui permet la connexion <code>https</code>. Tout cela sort du cadre du cours et nous aurions rien
+            appris si on avait utilisé la manière standard du déploiment.
+            
+        </p>
+    
 
         <div class="row text-center">
+            <h2>D'autres difficultés</h2>
+            <br/>
+            
             <div class="col-sm-4">
-                <div class="thumbnail">
-                    <img src="paris.jpg" alt="Paris" width="400" height="300"/>
-                    <p><strong>Paris</strong></p>
-                    <p>Friday 27 November 2015</p>
-                    
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="thumbnail">
-                    <img src="newyork.jpg" alt="New York" width="400" height="300"/>
-                    <p><strong>New York</strong></p>
-                    <p>Saturday 28 November 2015</p>
+                <div>
+                    <h5>Algorithm de mouvement</h5>
+                    <ul>
+                        <li>🃏 On a implementé un algorithme de manière naïve qui comporte de petits bugs.
+                            Le <em>«Refactoring»</em> du code est possible pourant on manque de temps pour corriger les petits bugs.</li>
+                        <li>◻️Dimension nxn: la plupart de ressources en ligne se limitent à une dimension 4.</li>
+                    </ul>
                    
                 </div>
             </div>
             <div class="col-sm-4">
-                <div class="thumbnail">
-                    <img src="sanfran.jpg" alt="San Francisco" width="400" height="300"/>
-                    <p><strong>San Francisco</strong></p>
-                    <p>Sunday 29 November 2015</p>
+                <div>
+                    <h5>Découpage du code</h5>
+                    <ul>
+                        <li>❌ Difficile sans le hooks. </li>
+                        <li>🚩 JavaScript est <em>« event-driven / functional ». </em></li>
+                        <li>⚛️ React n'est pas pensé <em>« OOP ». </em></li>
+                        <li>🧩 Pas de Node.js pour utiliser des lectures et écriture de fichiers.</li>
+                    </ul>
+                   
                     
                 </div>
             </div>
+            <div class="col-sm-4">
+                <div>
+                    <h5>Pas de libraires auxilaires</h5>
+                    <ul>
+                        <li>On utilise simplement les notions de cours donc on a evité l'utilisation de ressources externes comme des fonctions
+                            mathematiques qui aurait pu simplifier la tâche pour les daplacement de cases. 
+                        </li>
+                        
+                    </ul>
+                   
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <h2>On a beaucoup aimé les difficultés</h2>
+            <p>
+                Malgré les difficultés nous avons trouvé la façon de contourner les problèmes, nous avons remis en question notre manière de faire du code et
+                cela nous a permis de nous améliorer en tant que programmeurs, cela sera expliqué en détail dans la section suivante. 
+
+            </p>
         </div>
     </div>
+    
 
 
 </div>

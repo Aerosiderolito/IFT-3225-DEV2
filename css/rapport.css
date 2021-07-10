@@ -36,22 +36,34 @@ h3, h4 {
     font-size: 20px;
     color: #111;
 }
+#dif h2.text-center{
+    margin-top:-1.1em;
+}
+.row h2{
+    margin-top:1em;
+    margin-bottom:1em;
+
+}
+div.text-center p{
+    text-align:justify;
+}
 .container {
     padding: 80px 120px;
 }
 
-
+div#dev h2{
+    color: #000000;
+    padding-bottom:1em;
+}
 
 .bg-1 {
     background: #2d2d30;
     color: #bdbdbd;
 }
 .bg-1 h3 {color: #fff;}
-.bg-1 p {
-    /*
-    Remplir au besoin
-    
-    */
+div.row div div ul{
+    list-style-type: none;
+    text-align: justify;
 }
 .list-group-item:first-child {
     border-top-right-radius: 0;
@@ -74,14 +86,13 @@ h3, h4 {
     background-color: #fff;
     color: #000;
 }
-div.container p:nth-child(3){
-    text-align: left;
+div.container p{
+    text-align: justify;
 }
 
 figcaption{
     margin-top:2em;
 }
-
 
 
 footer {
