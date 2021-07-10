@@ -44,8 +44,8 @@ render() {
             </section>
 
             <aside>
-              <div>BEST</div>
-              <div>0</div>
+              <div><a href="rapport/rapport.xhtml"> Go to <br/> Rapport</a></div>
+              <div></div>
               
             </aside>
             

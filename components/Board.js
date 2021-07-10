@@ -5,7 +5,7 @@ class Board extends React.Component {
     this.state = {
       restart: false,
       dimension: 0,
-      winCase: 32, // objectif de victoire
+      winCase: 2048, // Changer ce valeur de victoire pour debugger
       cellTab: [], 
     };
   }

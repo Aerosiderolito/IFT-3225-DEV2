@@ -54,11 +54,11 @@ html{
     
 }
 
-.flex_display aside div:last-child, .flex_display section div:last-child{
+.flex_display aside div:last-child, .flex_display section div:last-child, aside div a, aside div a:hover, aside div a:visited, aside div a:active {
     
     color:#FFFFFF;
     font-weight: bolder;
-    font-size:25px;
+    text-decoration: none;
 
 }
 
