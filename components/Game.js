@@ -9,8 +9,8 @@ class Game extends React.Component {
       this.state = {
         
           score: 0,
-
-       
+          link: "rapport/rapport.xhtml",
+          winCase: 2048, // change this case for change the win tile
       };
     }
 
@@ -34,33 +34,10 @@ render() {
 
   return (
     <div  >
-        <div className={"flex_principal"}>
-        
-        <section><h1>2048</h1></section>
-
-        <aside>
-          
-          <div className={"flex_display"}>
-
-            <section>
-              <div >SCORE</div>
-              <div id="score">0</div>
-            </section>
-
-            <aside>
-              <div><a href="rapport/rapport.xhtml"> Go to <br/> Rapport</a></div>
-              <div></div>
-              
-            </aside>
-            
-          </div>
-        </aside>
-        
-        
-
-        </div>
-        <Board game={this}/>
-      <footer><a href="https://mesosiderito.space">César Rodriguez</a> - Mohammad Naim </footer>
+      <Info link={this.state.link}/>
+      <Board game={this} winCase={this.state.winCase}/>
+      <footer>
+        <a href="https://mesosiderito.space">César Rodriguez</a> - Mohammad Naim </footer>
     </div>
 
   );

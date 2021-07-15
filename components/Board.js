@@ -8,7 +8,6 @@ class Board extends React.Component {
     this.state = {
       restart: false,
       dimension: 0,
-      winCase: 2048, // Changer ce valeur de victoire pour debugger
       cellTab: [], 
     };
   }
@@ -95,25 +94,25 @@ class Board extends React.Component {
       
       case "ArrowUp":
         this.upDirection();
-        this.state.restart =  verifyVictory(this.state.cellTab, this.state.winCase);
+        this.state.restart =  verifyVictory(this.state.cellTab, this.props.winCase);
         this.addSquare();
 
         break;
       case "ArrowDown":
         this.downDirection();
-        this.state.restart =  verifyVictory(this.state.cellTab , this.state.winCase);
+        this.state.restart =  verifyVictory(this.state.cellTab , this.props.winCase);
         this.addSquare();
        
         break;
       case "ArrowLeft":
         this.leftDirection();
-        this.state.restart = verifyVictory(this.state.cellTab , this.state.winCase);
+        this.state.restart = verifyVictory(this.state.cellTab , this.props.winCase);
         this.addSquare();
        
         break;
       case "ArrowRight":
         this.rightDirection();
-        this.state.restart =  verifyVictory(this.state.cellTab , this.state.winCase);
+        this.state.restart =  verifyVictory(this.state.cellTab , this.props.winCase);
         this.addSquare();
 
         break;  
