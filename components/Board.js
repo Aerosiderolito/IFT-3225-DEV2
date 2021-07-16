@@ -6,10 +6,10 @@ class Board extends React.Component {
     
     super(props);
     this.state = {
-      restart: false,
-      dimension: 0,
-      cellTab: [],
-      newGame:false,
+      restart: this.props.restart,
+      dimension: this.props.dimension,
+      cellTab: this.props.cellTab,
+      newGame:this.props.newGame,
     };
   }
 /**

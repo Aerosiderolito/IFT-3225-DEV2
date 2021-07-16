@@ -11,6 +11,10 @@ class Game extends React.Component {
           score: 0,
           link: "rapport/rapport.xhtml",
           winCase: 2048, // change this case to change the win tile
+          restart: false,
+          dimension: 0,
+          cellTab: [],
+          newGame:false,
       };
     }
 
@@ -35,7 +39,8 @@ render() {
   return (
     <div  >
       <Info link={this.state.link}/>
-      <Board game={this} winCase={this.state.winCase}/>
+      <Board game={this} winCase={this.state.winCase} restart={this.state.restart} dimension={this.state.dimension}
+      cellTab={this.state.cellTab} newGame={this.state.newGame}/>
       <footer>
         <a href="https://mesosiderito.space">César Rodriguez</a> - Mohammad Naim </footer>
     </div>
