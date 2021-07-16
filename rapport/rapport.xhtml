@@ -94,27 +94,27 @@
                         <p>
                             Notre component le plus haut est "Game" qui contient le component board et info.
                             Game appel "Board" qui contient toute la logique du jeu tel que le mouvement,
-                            combinaision des cases.... Game fait appel aussi a le component "Info" qui a son tour
-                            sert a afficher le score, diriger vers le rapport directement de la page du jeu et aussi 
-                            pour relancer une nouvelle partie du jeu avec "New Game". On a aussi deux fichiers .js supplémentaires qui sont appelés à leur tour par
+                            combinaision des cases.... Game fait appel aussi a le component «Info», qui a son tour
+                            sert à afficher le score, diriger vers le rapport directement de la page du jeu et aussi sert à 
+                            effacer le board avec «clear board». On a aussi deux fichiers .js supplémentaires qui sont appelés à leur tour par
                             le component Board. L'ajout de ces deux fichiers supplémentaires est fait pour 
                             décomposer les méthodes et pour faciliter la navigation du correcteur ainsi de s'en servir seulement quand c'est nécessaire.
                         </p>
                         
-                            <h5>Quelques précisions sur l'algo</h5>
-                            <p>
-                            Mouvement à droite : Fait le mouvement et la combinaison de cases identiques pendant le mouvement.<br/>
-                            Mouvement à gauche : Fait le mouvement et la combinaison de cases identiques pendant le mouvement.<br/>
-                            Mouvement vers le bas : Transpose la matrice avec une méthode alternative, appele le mouvement droite et appele à nouveau la méthode de transposition.<br/>
-                            Mouvement vers le haut : Transpose la matrice avec une méthode alternative, appele le mouvement gauche et appele à nouveau la méthode de transposition.<br/>
-                            Arrêt du jeu (en cas d'échec) : Vérifie l'absence d'espace libre, vérifie l'absence de mouvement possible dans aucune direction.<br/>
-                            Arrêt du jeu (cas gagnant) : Parcourt tout le tableau et vérifie si une tuile est égale à la valeur de winCase.<br/>
-                            Score : À chaque mouvement, sa valeur est simplement incrémentée jusqu'à la fin de la partie.<br/>
-                        </p>
 
                     </div>
+                    
                 </div>
-                
+                <h5>Quelques précisions sur l'algo</h5>
+                <p>
+                    Mouvement vers le bas : Transpose la matrice avec une méthode alternative, appele le mouvement droite et appele à nouveau la méthode de transposition.<br/>
+                    Mouvement vers le haut : Transpose la matrice avec une méthode alternative, appele le mouvement gauche et appele à nouveau la méthode de transposition.<br/>
+                Mouvement à droite : Fait le mouvement et la combinaison de cases identiques pendant le mouvement.<br/>
+                Mouvement à gauche : Fait le mouvement et la combinaison de cases identiques pendant le mouvement.<br/>
+                Arrêt du jeu (en cas d'échec) : Vérifie l'absence d'espace libre, vérifie l'absence de mouvement possible dans aucune direction.<br/>
+                Arrêt du jeu (cas gagnant) : Parcourt tout le tableau et vérifie si une tuile est égale à la valeur de winCase.<br/>
+                Score : À chaque mouvement, sa valeur est simplement incrémentée jusqu'à la fin de la partie.<br/>
+            </p>
             </div>
             
                 
