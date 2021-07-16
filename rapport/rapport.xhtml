@@ -82,12 +82,36 @@
                        <p> <br/> <em>division de «Components dans le jeu » </em></p>
                     </div>
                     <div>
-                        <p>asdflkasdlfk;asdkf; asdasd;ddasaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-
-                            aadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-
-                            aaaaaaaaaaaaaaaaaaaaa
+                        <p>Nous avons approché avec une méthode de tableau 1D pour faire tout le jeu. Nous avons réussi à
+                            faire les mouvements et le nécessaire pour démarrer notre implémentation avec cette idée de
+                            1d. Plus tard, nous avons eu beaucoup de problèmes pour arrêter le jeu et d'autres opérations
+                            nécessaire au bon fonctionnement du jeu en raison de notre implémentation de 1d.
+                            Mais il était trop tard pour changer tout le code et le refaire, faute de temps.
+                            De plus, il était extrêmement difficile de trouver les erreurs et le débogage était devenu assez
+                            difficile très rapidement. Cependant, le jeu est fonctionnel avec quelques bugs minimes.
                         </p>
+
+                        <p>
+                            Notre component le plus haut est "Game" qui contient le component board et info.
+                            Game appel "Board" qui contient toute la logique du jeu tel que le mouvement,
+                            combinaision des cases.... Game fait appel aussi a le component "Info" qui a son tour
+                            sert a afficher le score, diriger vers le rapport directement de la page du jeu et aussi 
+                            pour relancer une nouvelle partie du jeu avec "New Game". On a aussi deux fichiers .js supplémentaires qui sont appelés à leur tour par
+                            le component Board. L'ajout de ces deux fichiers supplémentaires est fait pour 
+                            décomposer les méthodes et pour faciliter la navigation du correcteur ainsi de s'en servir seulement quand c'est nécessaire.
+                        </p>
+                        
+                            <h5>Quelques précisions sur l'algo</h5>
+                            <p>
+                            Mouvement à droite : Fait le mouvement et la combinaison de cases identiques pendant le mouvement.<br/>
+                            Mouvement à gauche : Fait le mouvement et la combinaison de cases identiques pendant le mouvement.<br/>
+                            Mouvement vers le bas : Transpose la matrice avec une méthode alternative, appele le mouvement droite et appele à nouveau la méthode de transposition.<br/>
+                            Mouvement vers le haut : Transpose la matrice avec une méthode alternative, appele le mouvement gauche et appele à nouveau la méthode de transposition.<br/>
+                            Arrêt du jeu (en cas d'échec) : Vérifie l'absence d'espace libre, vérifie l'absence de mouvement possible dans aucune direction.<br/>
+                            Arrêt du jeu (cas gagnant) : Parcourt tout le tableau et vérifie si une tuile est égale à la valeur de winCase.<br/>
+                            Score : À chaque mouvement, sa valeur est simplement incrémentée jusqu'à la fin de la partie.<br/>
+                        </p>
+
                     </div>
                 </div>
                 
