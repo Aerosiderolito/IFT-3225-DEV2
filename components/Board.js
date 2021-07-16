@@ -41,6 +41,7 @@ class Board extends React.Component {
         
       }
 
+      document.getElementsByTagName("button")[0].innerHTML="Clear Board";
       // Remplir de 2
      
       setRandomInit(this.state.cellTab, this.state.dimension);
