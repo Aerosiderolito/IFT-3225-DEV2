@@ -10,7 +10,7 @@ function verifyVictory (tab,winCase){
       return false;
     }
     else{
-      ReactDOM.render(<h1>Victoiry</h1>,document.getElementById("invisible"));
+      ReactDOM.render(<h1>Victory</h1>,document.getElementById("invisible"));
   
       document.getElementsByTagName("button")[0].innerHTML="Clear Board";
       return true;
