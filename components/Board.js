@@ -21,7 +21,7 @@ class Board extends React.Component {
       this.state.cellTab = [];
       this.state.dimension = 0;
     
-      if (this.state.restart){
+      if (this.state.restart || this.state.newGame){
         window.location.reload();
         return;
       };
