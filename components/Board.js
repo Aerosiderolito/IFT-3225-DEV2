@@ -8,7 +8,8 @@ class Board extends React.Component {
     this.state = {
       restart: false,
       dimension: 0,
-      cellTab: [], 
+      cellTab: [],
+      newGame:false,
     };
   }
 /**
@@ -25,8 +26,9 @@ class Board extends React.Component {
         return;
       };
         do{
+         
         this.state.dimension = +window.prompt("Enter dimension for the board");
-        if(this.state.dimension == 0){
+        if(this.state.dimension == 0 || this.state.newGame==true){
           window.location.reload();
           return;
         }
@@ -44,6 +46,7 @@ class Board extends React.Component {
       setRandomInit(this.state.cellTab, this.state.dimension);
 
       printer(this.state.cellTab, this.state.dimension);
+      this.state.newGame = true;
   }
 
 

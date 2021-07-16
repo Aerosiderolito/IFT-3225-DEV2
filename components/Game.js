@@ -10,7 +10,7 @@ class Game extends React.Component {
         
           score: 0,
           link: "rapport/rapport.xhtml",
-          winCase: 16, // change this case for change the win tile
+          winCase: 64, // change this case for change the win tile
       };
     }
 
